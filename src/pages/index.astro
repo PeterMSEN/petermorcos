@@ -1,16 +1,389 @@
+
 ---
+const researchAreas = [
+  {
+    title: "Laser Powder Bed Fusion",
+    acronym: "LPBF",
+    description: "Melt-pool physics, process modeling, and data-driven calibration.",
+    image: "/images/lpbf.jpg",
+    href: "/research/lpbf",
+  },
+  {
+    title: "Laser Wire Directed Energy Deposition",
+    acronym: "LW-DED",
+    description: "Laser–wire interactions, analytical modeling, and process optimization.",
+    image: "/images/lw-ded.jpg",
+    href: "/research/lw-ded",
+  },
+  {
+    title: "Embedded 3D Printing",
+    acronym: "E3DP",
+    description: "Rheology, printing behavior, and process–structure relationships.",
+    image: "/images/e3dp.jpg",
+    href: "/research/embedded-3d-printing",
+  },
+  {
+    title: "Additive Friction Stir Deposition",
+    acronym: "AFSD",
+    description: "Process monitoring, sensor data, and data-driven manufacturing.",
+    image: "/images/afsd.jpg",
+    href: "/research/afsd",
+  },
+];
+
+const interests = [
+  { name: "Metal Additive Manufacturing", category: "" },
+  { name: "Alloy Design", category: "" },
+  { name: "Artificial Intelligence", category: "" },
+  { name: "Computational Materials Science", category: "" },
+  { name: "Process Modeling & Optimization", category: "" },
+];
+
+
 ---
 
 <html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<link rel="icon" href="/favicon.ico" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
-	</head>
-	<body>
-		<h1>Astro</h1>
-	</body>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="Peter Morcos — Researcher in metal additive manufacturing, computational materials science, and artificial intelligence." />
+    <title>Peter Morcos | Research & Engineering</title>
+  </head>
+
+  <body>
+    <header class="site-header">
+      <a class="brand" href="/">PM<span>.</span></a>
+      <nav>
+        <a href="/">Home</a>
+        <a href="/about">About</a>
+        <a href="/research">Research</a>
+        <a href="/publications">Publications</a>
+        <a href="/teaching">Teaching</a>
+      </nav>
+    </header>
+
+    <main>
+      <!-- HERO -->
+      <section class="hero" id="home">
+        <div class="hero-content">
+          <p class="eyebrow">RESEARCHER · ENGINEER · SCIENTIST</p>
+          <h1>Peter <span>Morcos.</span></h1>
+          <h2>
+            Materials science researcher specializing in metal additive manufacturing, computational modeling, process optimization, and data-driven materials design.
+			
+          </h2>
+          <p class="hero-description">
+          </p>
+          <div class="hero-actions">
+            <a class="primary-button" href="/research">Explore my research ↗</a>
+			<a class="secondary-button" href="/cv">View CV ↗</a>
+
+          </div>
+        </div>
+
+		<div class="portrait-container">
+		<img src="/images/Peter.jpg" alt="Peter Morcos" />
+		</div>
+      </section>
+
+      <!-- RESEARCH INTERESTS -->
+      <section class="interests-section">
+        <div class="section-heading">
+          <h2>Research <span>interest.</span></h2>
+        </div>
+        <div class="interest-grid">
+          {interests.map((interest) => (
+            <div class="interest-item">
+              <span>{interest.category}</span>
+              <strong>{interest.name}</strong>
+            </div>
+          ))}
+        </div>
+
+      </section>
+
+          <!-- CONTACT -->
+      <section class="contact-section">
+        <h2>Let's connect.</h2>
+        <p>
+          Interested in research collaborations, academic opportunities,
+          or discussions about advanced manufacturing?
+        </p>
+        <a class="primary-button" href="/contact">Contact me ↗</a>
+      </section>
+    </main>
+
+    <footer>
+      <a class="brand" href="/">PM<span>.</span></a>
+      <p>Peter Morcos · Research & Engineering</p>
+      <a href="#home">Back to top ↑</a>
+    </footer>
+  </body>
 </html>
+
+<style>
+  @import url("https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap");
+
+  :root {
+    --ink: #172d35;
+    --muted: #687a7e;
+    --accent: #168b83;
+    --line: #e3e9e8;
+    --soft: #f5f8f7;
+  }
+
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    margin: 0;
+    font-family: "DM Sans", sans-serif;
+    color: var(--ink);
+    line-height: 1.7;
+    background: white;
+  }
+  a { color: inherit; text-decoration: none; }
+
+  .site-header {
+    min-height: 78px;
+    padding: 0 9%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 1px solid var(--line);
+  }
+  .brand {
+    font: 800 26px "Manrope", sans-serif;
+    letter-spacing: -2px;
+  }
+  .brand span, .section-heading h2 span { color: var(--accent); }
+  nav { display: flex; align-items: center; gap: 27px; }
+  nav a { font-size: 22px; color: #000; }
+  nav a:hover, .text-link:hover { color: var(--accent); }
+  .nav-cv { border: 1px solid var(--line); padding: 7px 13px; }
+
+.hero {
+  padding: 40px 10%;
+  min-height: 360px;
+  display: grid;
+  grid-template-columns: 1.3fr .7fr;
+  align-items: center;
+  gap: 45px;
+}
+  .eyebrow {
+    color: var(--accent);
+    font-size: 16px;
+    font-weight: 700;
+    letter-spacing: 2px;
+  }
+  .hero h1 {
+    font: 800 clamp(54px, 7vw, 82px)/1.04 "Manrope", sans-serif;
+    letter-spacing: -5px;
+    margin: 18px 0;
+  }
+  .hero h1 span { color: var(--accent); }
+  .hero h2 {
+    font: 600 20px/1.5 "Manrope", sans-serif;
+    max-width: 650px;
+  }
+  .hero-description { color: var(--muted); max-width: 550px; }
+  .hero-actions { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 28px; }
+  .primary-button, .secondary-button {
+    display: inline-block;
+    padding: 12px 20px;
+    font-size: 15px;
+    font-weight: 600;
+  }
+  .primary-button { background: var(--ink); color: white; }
+  .primary-button:hover { background: var(--accent); }
+  .secondary-button { border: 1px solid var(--line); }
+
+  .portrait-placeholder {
+    aspect-ratio: 4 / 5;
+    width: 100%;
+    max-width: 290px;
+    justify-self: center;
+    background: var(--soft);
+    border: 1px dashed #a9c9c4;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: var(--muted);
+  }
+  .portrait-icon {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    background: #dcece8;
+    display: grid;
+    place-items: center;
+    color: var(--accent);
+    font: 700 28px "Manrope", sans-serif;
+  }
+  .portrait-placeholder p { font-size: 10px; letter-spacing: 1.5px; }
+  .portrait-placeholder span { font-size: 10px; }
+
+  .section, .interests-section { padding: 55px 10%; }
+  .interests-section { background: var(--soft); }
+  .section-heading h2 {
+    font: 700 clamp(30px, 4vw, 43px)/1.2 "Manrope", sans-serif;
+    letter-spacing: -1.5px;
+    margin: 10px 0;
+  }
+.interest-grid {
+display: grid;
+grid-template-columns: repeat(6, 1fr);
+gap: 18px;
+margin-top: 30px;
+}
+
+.interest-item {
+grid-column: span 2;
+}
+
+.interest-item:nth-child(4) {
+grid-column: 2 / span 2;
+}
+
+.interest-item:nth-child(5) {
+grid-column: 4 / span 2;
+}
+  .interest-item {
+    background: white;
+    border: 1px solid var(--line);
+    padding: 25px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+	align-items: center;
+  	text-align: center;
+	transition: transform 0.25s ease, box-shadow 0.25s ease,
+              border-color 0.25s ease;
+}
+
+  .interest-item:hover {
+    transform: translateY(-5px);
+    border-color: var(--accent);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+}
+  
+  .interest-item span {
+    color: var(--accent);
+    font-size: 9px;
+    letter-spacing: 1px;
+  }
+  .interest-item strong { font: 800 20px "Manrope", sans-serif; }
+
+  .section-heading-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: end;
+    gap: 20px;
+  }
+  .section-intro { color: var(--muted); max-width: 570px; font-size: 14px; }
+  .text-link { color: var(--accent); font-size: 12px; font-weight: 700; white-space: nowrap; }
+
+  .research-section { background: white; }
+  .publications-section { background: var(--soft); }
+  .research-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 22px;
+    margin-top: 35px;
+  }
+  .research-card {
+    border: 1px solid var(--line);
+    transition: transform .2s, border-color .2s;
+  }
+  .research-card:hover { transform: translateY(-3px); border-color: #9bc6bf; }
+  .research-image {
+    position: relative;
+    height: 210px;
+    background: var(--soft);
+    overflow: hidden;
+  }
+  .research-image img, .personal-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+  .research-image img[src$=".jpg"] { color: var(--muted); }
+  .research-image span {
+    position: absolute;
+    left: 15px;
+    bottom: 12px;
+    background: white;
+    padding: 5px 10px;
+    color: var(--accent);
+    font-size: 11px;
+    font-weight: 700;
+  }
+  .research-card-content { padding: 20px; }
+  .research-card h3, .personal-card h3 {
+    font: 700 17px "Manrope", sans-serif;
+    margin: 0 0 8px;
+  }
+  .research-card p { color: var(--muted); font-size: 12px; min-height: 40px; }
+  .card-link { color: var(--accent); font-size: 11px; font-weight: 700; }
+
+  .publication-preview {
+    display: grid;
+    grid-template-columns: 45px 1fr auto;
+    gap: 20px;
+    align-items: center;
+    padding: 22px 5px;
+    border-bottom: 1px solid var(--line);
+  }
+  .publication-number { color: var(--accent); font-weight: 700; font-size: 12px; }
+  .publication-preview h3 { font: 600 15px "Manrope", sans-serif; margin: 0; }
+  .publication-preview p { color: var(--muted); font-size: 12px; margin: 4px 0 0; }
+  .publication-preview > span { color: var(--accent); font-size: 11px; }
+
+ 
+
+  .contact-section { background: var(--ink); color: white; padding: 75px 10%; }
+  .contact-section .eyebrow { color: #8ac9bf; }
+  .contact-section h2 { font: 700 42px "Manrope", sans-serif; margin: 10px 0; }
+  .contact-section p { color: #c1ced0; max-width: 570px; font-size: 14px; }
+  .contact-section .primary-button { background: white; color: var(--ink); margin-top: 15px; }
+
+  footer {
+    padding: 25px 9%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-top: 1px solid var(--line);
+  }
+  footer p, footer > a:last-child { color: var(--muted); font-size: 11px; }
+
+  @media (max-width: 800px) {
+    .site-header { padding: 18px 5%; align-items: flex-start; gap: 15px; }
+    nav { flex-wrap: wrap; justify-content: flex-end; gap: 12px; }
+    .hero { grid-template-columns: 1fr; padding: 65px 7%; gap: 35px; }
+    .portrait-placeholder { max-width: 240px; }
+    .section, .interests-section { padding: 65px 7%; }
+    .interest-grid { grid-template-columns: repeat(2, 1fr); }
+  }
+  @media (max-width: 560px) {
+    .research-grid, { grid-template-columns: 1fr; }
+    .section-heading-row { align-items: flex-start; flex-direction: column; }
+    .publication-preview { grid-template-columns: 30px 1fr; }
+    .publication-preview > span { grid-column: 2; }
+    footer { flex-wrap: wrap; gap: 10px; }
+  }
+
+	.portrait-container {
+	width: 350px;
+	height: 330px;
+	justify-self: center;
+	overflow: hidden;
+	}
+
+	.portrait-container img {
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+	display: block;
+	}
+</style>
