@@ -5,29 +5,29 @@ const researchAreas = [
     title: "Laser Powder Bed Fusion",
     acronym: "LPBF",
     description: "Melt-pool physics, process modeling, and data-driven calibration.",
-    image: "/images/lpbf.jpg",
-    href: "/research/lpbf",
+    image: `${import.meta.env.BASE_URL}/images/lpbf.jpg`,
+    href: `${import.meta.env.BASE_URL}/research/lpbf/`,
   },
   {
     title: "Laser Wire Directed Energy Deposition",
     acronym: "LW-DED",
     description: "Laser–wire interactions, analytical modeling, and process optimization.",
-    image: "/images/lw-ded.jpg",
-    href: "/research/lw-ded",
+    image: `${import.meta.env.BASE_URL}/images/lw-ded.jpg`,
+    href: `${import.meta.env.BASE_URL}/research/lw-ded/`,
   },
   {
     title: "Embedded 3D Printing",
     acronym: "E3DP",
     description: "Rheology, printing behavior, and process–structure relationships.",
-    image: "/images/e3dp.jpg",
-    href: "/research/embedded-3d-printing",
+    image: `${import.meta.env.BASE_URL}/images/e3dp.jpg`,
+    href: `${import.meta.env.BASE_URL}/research/embedded-3d-printing/`,
   },
   {
     title: "Additive Friction Stir Deposition",
     acronym: "AFSD",
     description: "Process monitoring, sensor data, and data-driven manufacturing.",
-    image: "/images/afsd.jpg",
-    href: "/research/afsd",
+    image: `${import.meta.env.BASE_URL}/images/afsd.jpg`,
+    href: `${import.meta.env.BASE_URL}/research/afsd/`,
   },
 ];
 
@@ -52,31 +52,33 @@ const interests = [
 
   <body>
     <header class="site-header">
-      <a class="brand" href="/">PM<span>.</span></a>
+      <a class="brand" href={`${import.meta.env.BASE_URL}/`}>PM<span>.</span></a>
       <nav>
-        <a href="/">Home</a>
-        <a href="/about">About</a>
-        <a href="/research">Research</a>
-        <a href="/publications">Publications</a>
-        <a href="/teaching">Teaching</a>
+        <a href={`${import.meta.env.BASE_URL}/`}>Home</a>
+        <a href={`${import.meta.env.BASE_URL}/about/`}>About</a>
+        <a href={`${import.meta.env.BASE_URL}/research/`}>Research</a>
+        <a href={`${import.meta.env.BASE_URL}/publications/`}>Publications</a>
+        <a href={`${import.meta.env.BASE_URL}/teaching/`}>Teaching</a>
       </nav>
     </header>
 
-    <main>
-      <!-- HERO -->
-      <section class="hero" id="home">
-        <div class="hero-content">
-          <p class="eyebrow">RESEARCHER · ENGINEER · SCIENTIST</p>
-          <h1>Peter <span>Morcos.</span></h1>
-          <h2>
-            Materials science researcher specializing in metal additive manufacturing, computational modeling, process optimization, and data-driven materials design.
-			
-          </h2>
-          <p class="hero-description">
-          </p>
+<main>
+  <!-- HERO -->
+  <section class="hero" id="home">
+    <div class="hero-content">
+      <p class="eyebrow">RESEARCHER · ENGINEER · SCIENTIST</p>
+
+      <h1>Peter Morcos, <span>Ph.D.</span></h1>
+
+      <h2>Postdoctoral Research Associate</h2>
+
+      <p class="hero-affiliation">
+        Department of Mechanical Science and Engineering<br />
+        University of Illinois Urbana-Champaign
+      </p>
           <div class="hero-actions">
-            <a class="primary-button" href="/research">Explore my research ↗</a>
-			<a class="secondary-button" href="/cv">View CV ↗</a>
+            <a class="primary-button" href={`${import.meta.env.BASE_URL}/research/`}>Explore my research ↗</a>
+			<a class="secondary-button" href={`${import.meta.env.BASE_URL}/cv/`}>View CV ↗</a>
 
           </div>
         </div>
@@ -109,12 +111,12 @@ const interests = [
           Interested in research collaborations, academic opportunities,
           or discussions about advanced manufacturing?
         </p>
-        <a class="primary-button" href="/contact">Contact me ↗</a>
+        <a class="primary-button" href="mailto:pmorcos@illinois.edu">Contact me ↗</a>
       </section>
     </main>
 
     <footer>
-      <a class="brand" href="/">PM<span>.</span></a>
+      <a class="brand" href={`${import.meta.env.BASE_URL}/`}>PM<span>.</span></a>
       <p>Peter Morcos · Research & Engineering</p>
       <a href="#home">Back to top ↑</a>
     </footer>
