@@ -1,0 +1,60 @@
+---
+import ResearchProjectPage from "../../components/ResearchProjectPage.astro";
+
+const project = {
+  title: "Physics-Based Process Mapping and Bayesian Calibration for Embedded 3D Printing",
+  description: "Experimental process mapping, computational fluid dynamics, and Bayesian calibration for embedded 3D printing.",
+  status: "Ongoing Research (Unpublished)",
+  overviewTitle: "Research Summary",
+  overview: [
+    "Embedded 3D printing (E3DP) forms complex structures by extruding functional inks into a supporting bath. The deposited geometry depends on extrusion pressure, printing speed, ink rheology, and the mechanical response of the bath. This project combines printing experiments, computational fluid dynamics (CFD), and Bayesian calibration to investigate how these factors interact and identify suitable printing conditions for different ink and bath systems.",
+  ],
+  objectives: [
+    {
+      number: "01",
+      title: "Map how printing conditions affect geometry",
+      description: "Measure how extrusion pressure and printing speed affect feature size and shape across ink and supporting bath systems.",
+    },
+    {
+      number: "02",
+      title: "Model ink flow and deposition",
+      description: "Develop CFD models that account for the rheology of the ink and bath and predict the geometry of deposited features.",
+    },
+    {
+      number: "03",
+      title: "Calibrate predictions and quantify uncertainty",
+      description: "Use experimental measurements to calibrate the simulations, quantify uncertainty in parameter estimates and predictions, and guide process optimization.",
+    },
+  ],
+  approachTitle: "Methodology",
+  methodLead: "The workflow links controlled printing experiments to calibrated simulations and uses both to construct process maps.",
+  methodSteps: [
+    {
+      number: "01",
+      title: "Build experimental process maps",
+      description: "Print across combinations of extrusion pressure and printing speed. Measure cross-sectional area, equivalent diameter, major and minor axis lengths, and shape descriptors to map how operating conditions affect the printed features.",
+    },
+    {
+      number: "02",
+      title: "Simulate extrusion and deposition",
+      description: "Use CFD to model ink flow into the supporting bath. Incorporate the rheology of both materials to examine how their flow behavior and the printing conditions shape the deposited feature.",
+    },
+    {
+      number: "03",
+      title: "Calibrate the CFD model",
+      description: "Apply the Kennedy–O’Hagan Bayesian framework to compare simulated and measured geometries, estimate uncertain model parameters, and account for systematic differences between simulations and experiments.",
+    },
+    {
+      number: "04",
+      title: "Integrate experiments and simulations",
+      description: "Combine experimental measurements and calibrated predictions into process maps that identify conditions associated with target geometries and help explain the flow behavior behind those outcomes.",
+    },
+  ],
+  conclusionTitle: "Expected Impact",
+  conclusion: [
+    "The process maps could help identify printing conditions that yield the desired geometry while making the uncertainty in those predictions explicit. The workflow could also provide a basis for adapting process maps to new ink and bath systems.",
+  ],
+};
+---
+
+<ResearchProjectPage {...project} />

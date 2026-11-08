@@ -1,0 +1,55 @@
+---
+import ResearchProjectPage from "../../components/ResearchProjectPage.astro";
+
+const project = {
+  title: "AI-Driven Melt Pool Segmentation and Geometric Characterization for Metal Additive Manufacturing",
+  description: "A general-purpose deep learning framework for segmenting and measuring melt pools in metallographic cross sections.",
+  status: "Ongoing Research (Unpublished)",
+  overviewTitle: "Research Summary",
+  overview: [
+    "Melt-pool geometry helps explain how laser powder bed fusion (L-PBF) conditions affect material outcomes. Manually tracing melt-pool boundaries in metallographic cross sections is time-consuming and can introduce variation between operators. This project builds on an earlier segmentation framework to develop a second-generation model (V2) that can segment images from diverse sources and use the resulting masks to measure melt-pool geometry.",
+  ],
+  objectives: [
+    { number: "01", title: "Measure melt-pool geometry", description: "Extract melt-pool width, depth, height, and four contact angles from segmented metallographic cross sections." },
+    { number: "02", title: "Automate high-throughput extraction", description: "Process batches of images from multiple sources to extract geometric measurements consistently and reduce manual tracing." },
+  ],
+  approachTitle: "Methodology",
+  methodLead: "The workflow connects dataset development and model evaluation with calibrated measurements from the predicted masks.",
+  methodSteps: [
+    { number: "01", title: "Assemble the development dataset", description: "Compile 243 manually segmented images from 16 publications and experimental sources to capture variation in image quality and melt-pool morphology." },
+    { number: "02", title: "Train the V2 segmentation model", description: "Extend the earlier framework with a general-purpose U-Net trained on images from multiple sources." },
+    { number: "03", title: "Compare segmentation strategies", description: "Evaluate V2 against the original baseline and test a routing strategy that selects a regime-specific model when the classifier is sufficiently confident and otherwise uses the general-purpose model." },
+    { number: "04", title: "Extract geometric measurements", description: "Post-process the predicted masks and estimate the substrate line to measure melt-pool width, depth, height, areas, and four separate contact angles." },
+    { number: "05", title: "Calibrate and check measurements", description: "Use image scale bars to convert pixel distances to physical units and compare automated measurements with manually characterized reference images." },
+  ],
+  resultsTitle: "Key Results",
+  resultsSubtitle: "The general-purpose model performed best overall",
+  results: [
+    "The general-purpose V2 model achieved a mean intersection over union (mIoU) of approximately 0.913. Confidence-based routing between specialized and general-purpose models did not improve overall segmentation performance.",
+    "In the four held-out examples shown below, the regime-specific model scored higher on the keyholing and balling images, but lower on the conduction and lack-of-fusion images. These examples illustrate why a model that helps in one regime may not improve the overall result.",
+  ],
+  findings: [
+    { value: "243", label: "Annotated images", description: "Manually segmented cross sections in the V2 development dataset." },
+    { value: "16", label: "Image sources", description: "Published and experimental sources with varied imaging conditions." },
+    { value: "≈0.913", label: "Mean IoU", description: "Average overlap between the general-purpose model’s predictions and reference masks." },
+  ],
+  figures: [
+    {
+      src: "/images/research/seg-uiuc/fig1.png",
+      alt: "Pipeline from scale-bar detection and regime classification through confidence-based model selection, mask post-processing, and geometric measurement",
+      caption: "Pipeline architecture evaluated in the study. Grey stages are deterministic image processing; green stages are learned models; the amber decision node is the confidence gate that selects between the regime-specific and general-purpose segmentation models.",
+    },
+    {
+      src: "/images/research/seg-uiuc/fig2.png",
+      alt: "Original micrographs, reference masks, and predictions from general-purpose and regime-specific models for conduction, keyholing, lack of fusion, and balling",
+      caption: "General-purpose versus regime-specific segmentation on four held-out images, one per solidification regime. The regime-specific model is better on the keyholing and balling cases and substantially worse on the conduction and lack-of-fusion (LOF) cases.",
+    },
+  ],
+  conclusionTitle: "Research Impact",
+  conclusion: [
+    "By connecting segmentation to calibrated geometric measurements, the workflow reduces reliance on manual tracing and supports more consistent comparisons across materials, imaging conditions, and L-PBF process settings.",
+  ],
+};
+---
+
+<ResearchProjectPage {...project} />

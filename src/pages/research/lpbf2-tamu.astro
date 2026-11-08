@@ -1,0 +1,339 @@
+---
+import SiteHeader from "../../components/SiteHeader.astro";
+
+const title =
+  "An All-Encompassing Study on the Joint Effect of Powder Feedstock Characteristics and Manufacturing Process Parameters on the Densification and Mechanical Properties of Additively Manufactured Nickel Alloy 718";
+
+const authors =
+  "P. Morcos, D. Shoukr, T. Sundermann, T. Dobrowolski, N. Barta, J. R. Jain, R. Arróyave, I. Karaman, and A. Elwany";
+const publication = "Additive Manufacturing, Volume 78 (2023), Article 103828";
+const doi = "https://doi.org/10.1016/j.addma.2023.103828";
+
+const processSteps = [
+  {
+    number: "01",
+    title: "Control feedstock characteristics",
+    description:
+      "Virgin and recycled IN718 powders were sieved and blended to vary particle-size range (0–75 or 20–75 μm), median particle size (27 or 37 μm), and moisture condition.",
+  },
+  {
+    number: "02",
+    title: "Execute a fractional-factorial DOE",
+    description:
+      "A 16-run resolution IV design jointly varied powder type, particle-size range, median size, moisture, and volumetric energy density (VED), enabling estimation of main and interaction effects.",
+  },
+  {
+    number: "03",
+    title: "Characterize and model the responses",
+    description:
+      "Powder-bed packing, optical-microscopy density, tensile properties, and Charpy impact energy were measured, then analyzed using ANOVA and reduced regression models evaluated by leave-one-out cross-validation.",
+  },
+];
+
+const doeRuns = [
+  [1, "Virgin", "20:75 μm", "27 μm", "Dry", "VED 2"],
+  [2, "Virgin", "20:75 μm", "37 μm", "Ambient", "VED 2"],
+  [3, "Virgin", "0:75 μm", "27 μm", "Ambient", "VED 1"],
+  [4, "Virgin", "0:75 μm", "37 μm", "Dry", "VED 1"],
+  [5, "Recycled", "20:75 μm", "27 μm", "Ambient", "VED 2"],
+  [6, "Recycled", "20:75 μm", "37 μm", "Dry", "VED 2"],
+  [7, "Recycled", "0:75 μm", "27 μm", "Dry", "VED 1"],
+  [8, "Recycled", "0:75 μm", "37 μm", "Ambient", "VED 1"],
+  [9, "Virgin", "20:75 μm", "27 μm", "Dry", "VED 1"],
+  [10, "Virgin", "20:75 μm", "37 μm", "Ambient", "VED 1"],
+  [11, "Virgin", "0:75 μm", "27 μm", "Ambient", "VED 2"],
+  [12, "Virgin", "0:75 μm", "37 μm", "Dry", "VED 2"],
+  [13, "Recycled", "20:75 μm", "27 μm", "Ambient", "VED 1"],
+  [14, "Recycled", "20:75 μm", "37 μm", "Dry", "VED 1"],
+  [15, "Recycled", "0:75 μm", "27 μm", "Dry", "VED 2"],
+  [16, "Recycled", "0:75 μm", "37 μm", "Ambient", "VED 2"],
+];
+
+const findings = [
+  {
+    value: "5 factors",
+    label: "Jointly evaluated",
+    description: "Powder type, PSD range, D50, moisture condition, and VED.",
+  },
+  {
+    value: "16 runs",
+    label: "DOE experiments",
+    description: "A statistically designed set of IN718 builds and measurements.",
+  },
+  {
+    value: "<20 μm",
+    label: "Density tradeoff",
+    description: "Including fine particles improved powder-bed packing and optical density.",
+  },
+  {
+    value: "BC + BCE",
+    label: "Recurring interactions",
+    description: "Particle-size interactions influenced multiple measured responses.",
+  },
+];
+---
+
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="A DOE and ANOVA study of how IN718 powder feedstock characteristics and L-PBF process parameters affect densification and mechanical properties."
+    />
+    <link rel="icon" href={`${import.meta.env.BASE_URL}/favicon.svg`} />
+    <title>{title} | Peter Morcos</title>
+  </head>
+
+  <body>
+    <SiteHeader />
+
+    <main>
+      <section class="project-intro">
+        <div class="section-inner">
+          <a href={`${import.meta.env.BASE_URL}/research/`} class="back-link">← Back to Research</a>
+          <h1>{title}</h1>
+          <p class="project-authors">{authors}</p>
+          <p class="project-publication">{publication}</p>
+          <div class="project-meta">
+            <span class="project-status">Published Research</span>
+            <a href={doi} target="_blank" rel="noopener noreferrer">View Publication ↗</a>
+          </div>
+        </div>
+      </section>
+
+      <section class="overview-section">
+        <div class="section-inner">
+          <h2>Research Summary</h2>
+          <div class="overview-content">
+            <p>
+              This study quantified the joint effects of IN718 powder characteristics and L-PBF energy input
+              using a resolution IV fractional-factorial experiment. Virgin or recycled condition, particle-size
+              range, median particle size, moisture, and VED were related to powder-bed packing, printed density,
+              tensile properties, and impact performance. The analysis shows that feedstock choices that improve
+              densification do not necessarily maximize mechanical performance.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <section class="methodology-section">
+        <div class="section-inner">
+          <h2>Methodology</h2>
+          <div class="process-list">
+            {processSteps.map((step) => (
+              <article class="process-item">
+                <span class="process-number">{step.number}</span>
+                <div>
+                  <h3>{step.title}</h3>
+                  <p>{step.description}</p>
+                </div>
+              </article>
+            ))}
+          </div>
+
+          <div class="factor-table-wrap doe-table-wrap">
+            <h3>Table 2. Experimental runs according to the selected DOE</h3>
+            <p class="table-note">
+              The 16-run resolution IV fractional-factorial design estimates five main effects and selected
+              interactions. A and B are powder type and particle-size range; C is median particle size, D is
+              moisture condition, and E is VED.
+            </p>
+            <table class="doe-table">
+              <thead>
+                <tr>
+                  <th scope="col">Run</th>
+                  <th scope="col">Powder type (A)</th>
+                  <th scope="col">Particle-size range (B)</th>
+                  <th scope="col">Median size (C)</th>
+                  <th scope="col">Moisture (D)</th>
+                  <th scope="col">VED (E)</th>
+                </tr>
+              </thead>
+              <tbody>
+                {doeRuns.map(([run, powder, range, median, moisture, ved]) => (
+                  <tr>
+                    <th scope="row">{run}</th>
+                    <td>{powder}</td>
+                    <td>{range}</td>
+                    <td>{median}</td>
+                    <td>{moisture}</td>
+                    <td>{ved}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+      <section class="results-section">
+        <div class="section-inner">
+          <h2 class="results-heading">Key Findings</h2>
+          <p class="results-subtitle">Powder size and energy input created a density–properties tradeoff</p>
+          <div class="results-content">
+            <p>
+              VED, powder type, and particle-size range were among the most frequently significant factors;
+              VED and powder type had the strongest effects on tensile strength. Interactions between
+              particle-size range and median size (BC), and their interaction with VED (BCE), recurred across
+              several responses, demonstrating that feedstock variables cannot be optimized independently.
+            </p>
+            <p>
+              Including particles smaller than 20 μm improved powder-bed packing and optical-microscopy density,
+              whereas the 20–75 μm range generally produced better tensile and impact responses. Moisture was
+              insignificant for most responses but affected Charpy impact energy and impaired powder flowability.
+              Reduced regression models also predicted held-out observations more accurately than full models.
+            </p>
+          </div>
+
+          <div class="metrics-grid">
+            {findings.map((item) => (
+              <article class="metric-card">
+                <span class="metric-value">{item.value}</span>
+                <h3>{item.label}</h3>
+                <p>{item.description}</p>
+              </article>
+            ))}
+          </div>
+
+          <div class="results-figures">
+            <figure class="research-figure">
+              <img
+                class="figure-image"
+                src={`${import.meta.env.BASE_URL}/images/research/lpbf2-tamu/fig2.png`}
+                alt="Effect plots showing how particle-size range influences the main measured outcomes"
+                loading="lazy"
+              />
+              <figcaption>
+                Effect plots showing the influence of particle-size range on the main quantities of interest.
+              </figcaption>
+            </figure>
+          </div>
+        </div>
+      </section>
+
+      <section class="conclusions-section">
+        <div class="section-inner">
+          <h2>Research Significance</h2>
+          <div class="conclusions-content">
+            <p>
+              The results support response-specific feedstock selection rather than density-only optimization
+              and provide a statistical framework for balancing powder reuse, particle-size control, and process
+              energy. The benefits of fine particles must also be weighed against mechanical-property tradeoffs,
+              handling constraints, cost, and health and safety considerations. Fatigue and corrosion behavior
+              were outside the scope of this study.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <section class="publication-section">
+        <div class="section-inner">
+          <h2>Related Publication</h2>
+          <div class="publication-card">
+            <p class="publication-label">RESEARCH ARTICLE · 2023</p>
+            <h3>{title}</h3>
+            <p>{authors}</p>
+            <p class="publication-name">{publication}</p>
+            <a href={doi} target="_blank" rel="noopener noreferrer">Read publication ↗</a>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <p>© {new Date().getFullYear()} Peter Morcos. All rights reserved.</p>
+    </footer>
+  </body>
+</html>
+
+<style>
+  :root { --ink: #172d35; --muted: #687a7e; --accent: #168b83; --line: #e3e9e8; --soft: #f5f8f7; }
+  * { box-sizing: border-box; }
+  body { margin: 0; font-family: Arial, Helvetica, sans-serif; color: var(--ink); background: white; line-height: 1.7; }
+  .site-header { padding: 22px 10%; display: flex; align-items: center; justify-content: space-between; gap: 30px; border-bottom: 1px solid var(--line); background: white; }
+  .site-name { color: var(--ink); font-size: 22px; font-weight: 700; text-decoration: none; white-space: nowrap; }
+  nav { display: flex; align-items: center; gap: 27px; }
+  nav a { color: var(--muted); text-decoration: none; font-size: 15px; font-weight: 600; }
+  nav a:hover, nav a.active { color: var(--accent); }
+  .section-inner { width: 80%; max-width: 1250px; margin: 0 auto; }
+  h1, h2, h3, h4 { color: var(--ink); line-height: 1.3; }
+  h2 { font-size: 30px; margin: 0 0 30px; }
+  .project-intro { padding: 55px 0 65px; }
+  .back-link { display: inline-block; color: var(--accent); text-decoration: none; font-weight: 700; margin-bottom: 28px; }
+  .back-link:hover { text-decoration: underline; }
+  .project-intro h1 { max-width: 1050px; font-size: 42px; line-height: 1.25; margin: 0 0 22px; }
+  .project-authors { color: #455b61; font-size: 16px; margin: 0 0 4px; }
+  .project-publication { color: var(--muted); font-size: 15px; margin: 0; }
+  .project-meta { display: flex; align-items: center; gap: 25px; margin-top: 25px; }
+  .project-status { display: inline-block; color: var(--accent); background: #eaf5f3; padding: 5px 13px; border-radius: 4px; font-size: 13px; font-weight: 700; }
+  .project-meta a, .publication-card a { color: var(--accent); text-decoration: none; font-size: 14px; font-weight: 700; }
+  .project-meta a:hover, .publication-card a:hover { text-decoration: underline; }
+  .overview-section, .methodology-section, .publication-section { padding: 70px 0 80px; }
+  .overview-content, .results-content, .conclusions-content { max-width: 1000px; }
+  .overview-content p, .results-content p, .conclusions-content p { color: #455b61; font-size: 17px; line-height: 1.9; margin: 0 0 20px; text-align: justify; }
+  .objectives-section, .results-section, .conclusions-section { padding: 70px 0 80px; background: var(--soft); }
+  .objectives-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; }
+  .objective-card { background: white; border: 1px solid var(--line); border-radius: 8px; padding: 27px; }
+  .card-number { color: var(--accent); font-size: 14px; font-weight: 700; }
+  .objective-card h3 { font-size: 19px; margin: 15px 0 10px; }
+  .objective-card p { color: #52676d; font-size: 15px; line-height: 1.8; margin: 0; text-align: justify; }
+  .section-lead { max-width: 900px; color: #52676d; font-size: 17px; line-height: 1.8; margin: -10px 0 35px; text-align: justify; }
+  .process-list { max-width: 1000px; }
+  .process-item { display: grid; grid-template-columns: 55px 1fr; gap: 22px; padding: 22px 0; border-bottom: 1px solid var(--line); }
+  .process-item:last-child { border-bottom: none; }
+  .process-number { color: var(--accent); font-size: 19px; font-weight: 700; }
+  .process-item h3 { font-size: 19px; margin: 0 0 7px; }
+  .process-item p { color: #52676d; font-size: 15px; line-height: 1.8; margin: 0; text-align: justify; }
+  .results-heading { color: var(--ink); font-size: 34px; margin-bottom: 8px; }
+  .results-subtitle { color: var(--accent); font-size: 22px; font-weight: 600; margin: 0 0 28px; }
+  .metrics-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 18px; margin-top: 35px; }
+  .metric-card { padding: 23px 18px; background: white; border: 1px solid var(--line); border-radius: 7px; }
+  .metric-value { display: block; color: var(--accent); font-size: 25px; font-weight: 700; line-height: 1.3; }
+  .metric-card h3 { font-size: 15px; margin: 10px 0 6px; }
+  .metric-card p { color: var(--muted); font-size: 13px; line-height: 1.6; margin: 0; }
+  .factor-table-wrap { margin-top: 38px; overflow-x: auto; }
+  .factor-table-wrap h3 { font-size: 20px; margin: 0 0 14px; }
+  .doe-table-wrap { margin-top: 42px; }
+  .table-note { color: var(--muted); font-size: 14px; margin: 0 0 16px; }
+  table { width: 100%; border-collapse: collapse; background: white; border: 1px solid var(--line); }
+  th, td { padding: 13px 16px; border-bottom: 1px solid var(--line); text-align: left; vertical-align: top; }
+  thead th { background: #eaf5f3; color: var(--ink); font-size: 14px; }
+  tbody th { color: var(--ink); font-size: 14px; font-weight: 700; white-space: nowrap; }
+  tbody td { color: #52676d; font-size: 14px; }
+  .doe-table { min-width: 760px; }
+  .results-figures { display: grid; grid-template-columns: minmax(0, 1000px); justify-content: center; margin-top: 40px; }
+  .research-figure { width: 100%; min-width: 0; margin: 0 auto; }
+  .figure-image { display: block; width: 100%; height: auto; background: white; border: 1px solid var(--line); border-radius: 6px; }
+  .research-figure figcaption { color: var(--muted); font-size: 15px; line-height: 1.6; margin-top: 12px; text-align: center; }
+  .publication-card { max-width: 900px; padding: 28px 32px; border: 1px solid var(--line); border-radius: 8px; background: var(--soft); }
+  .publication-label { color: var(--accent); font-size: 12px; font-weight: 700; letter-spacing: 1px; margin: 0 0 10px; }
+  .publication-card h3 { font-size: 19px; margin: 0 0 12px; }
+  .publication-card p { color: #52676d; font-size: 14px; margin: 5px 0; }
+  .publication-card .publication-name { color: var(--muted); margin-bottom: 18px; }
+  .site-footer { padding: 22px 10%; text-align: center; border-top: 1px solid var(--line); }
+  .site-footer p { color: var(--muted); font-size: 13px; margin: 0; }
+  @media (max-width: 1000px) {
+    .site-header { padding-left: 5%; padding-right: 5%; }
+    nav { gap: 15px; }
+    .section-inner { width: 90%; }
+    .metrics-grid { grid-template-columns: repeat(2, 1fr); }
+  }
+  @media (max-width: 700px) {
+    .site-header { flex-direction: column; gap: 15px; }
+    nav { flex-wrap: wrap; justify-content: center; gap: 12px 18px; }
+    nav a { font-size: 14px; }
+    .project-intro h1 { font-size: 32px; }
+    h2 { font-size: 27px; }
+    .project-intro, .overview-section, .objectives-section, .methodology-section, .results-section, .conclusions-section, .publication-section { padding-top: 48px; padding-bottom: 55px; }
+    .overview-content p, .results-content p, .conclusions-content p, .section-lead { font-size: 16px; }
+    .objectives-grid { grid-template-columns: 1fr; }
+    .results-heading { font-size: 30px; }
+    .results-subtitle { font-size: 19px; }
+    .metrics-grid { grid-template-columns: repeat(2, 1fr); gap: 12px; }
+    .metric-card { padding: 18px 14px; }
+    .metric-value { font-size: 21px; }
+    .project-meta { flex-wrap: wrap; gap: 15px; }
+    th, td { padding: 10px 12px; }
+  }
+</style>

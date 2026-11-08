@@ -1,0 +1,41 @@
+---
+import SiteHeader from "../components/SiteHeader.astro";
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="robots" content="noindex" />
+    <link rel="icon" href={`${import.meta.env.BASE_URL}/favicon.svg`} />
+    <title>Page Not Found | Peter Morcos</title>
+  </head>
+  <body>
+    <SiteHeader />
+    <main>
+      <p class="eyebrow">404</p>
+      <h1>Page not found</h1>
+      <p>The page may have moved or may still be under development.</p>
+      <div class="actions">
+        <a class="primary" href={`${import.meta.env.BASE_URL}/`}>Return home</a>
+        <a href={`${import.meta.env.BASE_URL}/research/`}>View research</a>
+      </div>
+    </main>
+  </body>
+</html>
+
+<style>
+  :root { --ink: #172d35; --muted: #687a7e; --accent: #168b83; --line: #e3e9e8; }
+  * { box-sizing: border-box; }
+  body { margin: 0; color: var(--ink); background: white; font-family: "DM Sans", Arial, sans-serif; }
+  main { width: min(90%, 760px); min-height: calc(100vh - 79px); margin: 0 auto; padding: 14vh 0 80px; }
+  .eyebrow { color: var(--accent); font-size: 14px; font-weight: 700; letter-spacing: 2px; }
+  h1 { margin: 12px 0; font: 800 clamp(42px, 8vw, 72px)/1.1 "Manrope", sans-serif; letter-spacing: -2px; }
+  main > p:not(.eyebrow) { max-width: 560px; color: var(--muted); font-size: 18px; line-height: 1.7; }
+  .actions { display: flex; flex-wrap: wrap; gap: 16px; margin-top: 30px; }
+  .actions a { padding: 12px 19px; color: var(--accent); border: 1px solid var(--line); text-decoration: none; font-weight: 700; }
+  .actions .primary { color: white; background: var(--ink); border-color: var(--ink); }
+  .actions a:hover { border-color: var(--accent); }
+  .actions a:focus-visible { outline: 3px solid rgba(22, 139, 131, 0.35); outline-offset: 4px; }
+</style>

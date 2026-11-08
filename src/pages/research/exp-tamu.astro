@@ -1,0 +1,52 @@
+---
+import ResearchProjectPage from "../../components/ResearchProjectPage.astro";
+
+const project = {
+  title: "Exploring Chemistry and Additive Manufacturing Design Spaces: A Perspective on Computationally Guided Design of Printable Alloys",
+  description: "A perspective on computationally guided co-design of alloy chemistry and laser powder bed fusion process parameters.",
+  authors: "S. Sheikh, B. Vela, V. Attari, X. Huang, P. Morcos, J. Hanagan, C. Acemi, I. Karaman, A. Elwany, and R. Arróyave",
+  publication: "Materials Research Letters 12(4) (2024), 235–263",
+  doi: "https://doi.org/10.1080/21663831.2024.2316204",
+  overviewTitle: "Perspective Overview",
+  overview: [
+    "This perspective proposes an integrated computational strategy for co-designing alloy chemistry and laser powder bed fusion (L-PBF) conditions. Rather than optimizing composition and processing independently, it treats printability, microstructure, and performance as coupled objectives and combines rapid physical indicators, thermal and microstructure models, curated experimental data, and data-driven optimization to prioritize alloy–process pairs for validation.",
+  ],
+  objectivesTitle: "Design Priorities",
+  objectives: [
+    { number: "01", title: "Screen chemistry and process jointly", description: "Eliminate alloy–process combinations with high susceptibility to porosity or cracking before committing experimental resources." },
+    { number: "02", title: "Resolve process–structure relationships", description: "Connect melt-pool thermal histories and solidification conditions to the microstructures produced during L-PBF." },
+    { number: "03", title: "Integrate heterogeneous evidence", description: "Organize simulations, experiments, feedstock information, and processing metadata into reusable materials databases." },
+    { number: "04", title: "Guide sequential experimentation", description: "Use machine learning and Bayesian design of experiments to select informative alloy–process candidates and update the design space iteratively." },
+  ],
+  approachTitle: "Proposed Co-Design Approach",
+  methodLead: "The article organizes alloy and process development as a staged workflow in which increasingly expensive analyses are applied only to progressively stronger candidates.",
+  methodSteps: [
+    { number: "01", title: "Apply rapid printability indicators", description: "Query chemistry-based cracking indicators and process-based lack-of-fusion, keyholing, and balling criteria to reduce the initial design space." },
+    { number: "02", title: "Construct physics-based process maps", description: "Use analytical or numerical thermal models to estimate melt-pool geometry and identify candidate processing windows." },
+    { number: "03", title: "Predict microstructure selection", description: "Link local thermal gradients and solidification rates to microstructure-selection models, with higher-fidelity simulations and experiments used for validation." },
+    { number: "04", title: "Curate experimental and computational data", description: "Record alloy chemistry, feedstock, machine settings, process conditions, defects, microstructure, and properties in structured databases." },
+    { number: "05", title: "Close the design loop", description: "Train data-driven models and use Bayesian optimization to select new experiments that improve both predictive models and candidate designs." },
+  ],
+  resultsTitle: "Proposed Research Framework",
+  resultsSubtitle: "A hierarchical route from broad screening to experimental validation",
+  results: [
+    "The proposed workflow uses inexpensive, fast-acting indicators to filter large chemistry–process spaces before deploying melt-pool and microstructure models on the most promising candidates. This hierarchy addresses lack-of-fusion, keyholing, balling, and cracking while retaining the link between processing conditions and the resulting structure.",
+    "The perspective further positions curated databases, deep-learning surrogates, and Bayesian optimization as mechanisms for combining prior calculations with new experimental evidence. The framework is therefore a research agenda for accelerated alloy–process co-design rather than a replacement for physical validation.",
+  ],
+  findings: [
+    { value: "Coupled", label: "Design space", description: "Alloy chemistry and L-PBF conditions are optimized together." },
+    { value: "Hierarchical", label: "Model fidelity", description: "Fast screening precedes more expensive simulation and experiments." },
+    { value: "Multiscale", label: "Process–structure linkage", description: "Thermal history is connected to defect and microstructure predictions." },
+    { value: "Closed-loop", label: "Experimental learning", description: "New evidence iteratively updates models and design decisions." },
+  ],
+  figures: [
+    { src: "/images/research/exp-tamu/fig1.png", alt: "Integrated computational workflow for alloy and L-PBF process co-design", caption: "Integrated workflow for screening chemistry and processing spaces, modeling printability and microstructure, curating data, and guiding experiments." },
+  ],
+  conclusionTitle: "Perspective and Implications",
+  conclusion: [
+    "The central argument is that printable-alloy development should be formulated as a multi-objective, process–structure–property–performance problem. Computational screening can reduce the experimental burden and shorten the design-to-deployment cycle, but experiments remain essential for establishing feasibility and validating predictions.",
+  ],
+};
+---
+
+<ResearchProjectPage {...project} />

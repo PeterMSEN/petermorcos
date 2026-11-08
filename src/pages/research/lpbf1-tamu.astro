@@ -1,4 +1,6 @@
 ---
+import SiteHeader from "../../components/SiteHeader.astro";
+
 const title =
   "Influence of Layer Thickness on the Printability of Nickel Alloy 718: A Systematic Process Optimization Framework";
 
@@ -7,51 +9,24 @@ const authors =
 const publication = "Additive Manufacturing, Volume 73 (2023), Article 103646";
 const doi = "https://doi.org/10.1016/j.addma.2023.103646";
 
-const objectives = [
-  {
-    number: "01",
-    title: "Study printability across the process space",
-    description:
-      "Evaluate laser power and scan speed combinations while accounting for lack of fusion, keyholing, and balling.",
-  },
-  {
-    number: "02",
-    title: "Assess two powder-layer thicknesses",
-    description:
-      "Compare 60 μm and 90 μm layers to understand their effects on the printable region and production rate.",
-  },
-  {
-    number: "03",
-    title: "Validate predicted process windows",
-    description:
-      "Test selected parameter combinations using density, porosity, and tensile measurements.",
-  },
-];
-
 const processSteps = [
   {
     number: "01",
-    title: "Build an initial process map",
+    title: "Model and calibrate melt-pool behavior",
     description:
-      "Use the Eagar–Tsai analytical thermal model to survey laser power and scan speed for each layer thickness.",
+      "The Eagar–Tsai analytical thermal model surveyed laser power and scan speed, and single-track experiments calibrated melt-pool predictions for 60 μm and 90 μm layers.",
   },
   {
     number: "02",
-    title: "Calibrate melt-pool predictions",
+    title: "Construct printability maps",
     description:
-      "Print and characterize single tracks across the process space, then combine the measurements with the model using statistical calibration.",
+      "Melt-pool geometry was used to identify lack-of-fusion, keyholing, and balling regions and to estimate a conservative maximum hatch spacing.",
   },
   {
     number: "03",
-    title: "Identify defect regions and hatch spacing",
+    title: "Validate density and mechanical performance",
     description:
-      "Use melt-pool geometry to classify lack of fusion, keyholing, and balling, and estimate a conservative maximum hatch spacing for adequate fusion.",
-  },
-  {
-    number: "04",
-    title: "Validate density and performance",
-    description:
-      "Print density coupons and tensile specimens from selected regions, then evaluate porosity and mechanical properties.",
+      "Selected conditions were validated using printed cubes and tensile specimens, with density measured by optical microscopy and Archimedes testing and performance assessed by uniaxial tension.",
   },
 ];
 
@@ -72,9 +47,9 @@ const findings = [
     description: "The larger layer did not increase maximum VBR with the criterion used.",
   },
   {
-    value: "1047 / 1021 MPa",
-    label: "Mean UTS · 60 / 90 μm",
-    description: "The 60 μm group had a higher average ultimate tensile strength.",
+    value: "754 / 647 MPa",
+    label: "Mean yield strength · 60 / 90 μm",
+    description: "The 60 μm group showed significantly higher average yield strength.",
   },
 ];
 ---
@@ -87,23 +62,12 @@ const findings = [
       name="description"
       content="A systematic printability and process optimization study of laser powder bed fusion of nickel alloy 718 at 60 μm and 90 μm layer thicknesses."
     />
+    <link rel="icon" href={`${import.meta.env.BASE_URL}/favicon.svg`} />
     <title>{title} | Peter Morcos</title>
   </head>
 
   <body>
-    <header class="site-header">
-      <a href={`${import.meta.env.BASE_URL}/`} class="site-name">Peter Morcos, PhD</a>
-
-      <nav aria-label="Main navigation">
-        <a href={`${import.meta.env.BASE_URL}/`}>Home</a>
-        <a href={`${import.meta.env.BASE_URL}/about/`}>About</a>
-        <a href={`${import.meta.env.BASE_URL}/research/`} class="active">Research</a>
-        <a href={`${import.meta.env.BASE_URL}/publications/`}>Publications</a>
-        <a href={`${import.meta.env.BASE_URL}/teaching/`}>Teaching</a>
-        <a href={`${import.meta.env.BASE_URL}/cv/`}>CV</a>
-        <a href={`${import.meta.env.BASE_URL}/contact/`}>Contact</a>
-      </nav>
-    </header>
+    <SiteHeader />
 
     <main>
       <section class="project-intro">
@@ -121,46 +85,22 @@ const findings = [
 
       <section class="overview-section">
         <div class="section-inner">
-          <h2>Research Overview</h2>
+          <h2>Research Summary</h2>
           <div class="overview-content">
             <p>
-              Selecting laser powder bed fusion (L-PBF) parameters for nickel alloy 718 is challenging because
-              laser power, scan speed, hatch spacing, and powder-layer thickness interact to shape melt pools,
-              porosity, microstructure, and mechanical performance. Common aggregate measures such as linear
-              or volumetric energy density can hide the effects of individual parameters.
+              This study developed and validated a physics-informed process-optimization framework for laser
+              powder bed fusion (L-PBF) of nickel alloy 718 at 60 μm and 90 μm layer thicknesses. By combining
+              analytical melt-pool modeling, single-track calibration, defect criteria, and build validation,
+              the work quantified how layer thickness changes the printable process window, productivity, and
+              tensile performance without relying on aggregate energy-density measures alone.
             </p>
-            <p>
-              This study applies a systematic printability framework to compare 60 μm and 90 μm powder layers.
-              The framework searches laser power and scan speed combinations, predicts defect-prone regions,
-              and estimates a conservative maximum hatch spacing. Density and tensile testing then validate
-              selected conditions from the predicted process windows.
-            </p>
-          </div>
-        </div>
-      </section>
-
-      <section class="objectives-section">
-        <div class="section-inner">
-          <h2>Research Objectives</h2>
-          <div class="objectives-grid">
-            {objectives.map((item) => (
-              <article class="objective-card">
-                <span class="card-number">{item.number}</span>
-                <h3>{item.title}</h3>
-                <p>{item.description}</p>
-              </article>
-            ))}
           </div>
         </div>
       </section>
 
       <section class="methodology-section">
         <div class="section-inner">
-          <h2>Experimental and Computational Methodology</h2>
-          <p class="section-lead">
-            Analytical melt-pool modeling and single-track experiments were combined to map candidate
-            process windows, followed by density, porosity, and tensile testing of selected builds.
-          </p>
+          <h2>Methodology</h2>
           <div class="process-list">
             {processSteps.map((step) => (
               <article class="process-item">
@@ -177,44 +117,26 @@ const findings = [
 
       <section class="results-section">
         <div class="section-inner">
-          <h2 class="results-heading">Results and Discussion</h2>
-          <p class="results-subtitle">Layer thickness changes the size of the process window</p>
+          <h2 class="results-heading">Key Findings</h2>
+          <p class="results-subtitle">Layer thickness narrowed the process window without preventing full density</p>
           <div class="results-content">
             <p>
-              The 90 μm layer thickness required greater energy input to form sufficiently deep melt pools,
-              which reduced its predicted good-printability region. The framework identified parameter
-              combinations that produced parts with optical-microscopy density up to 99.99% for both layer
-              thicknesses.
+              The 90 μm layer required greater energy input to form sufficiently deep melt pools and therefore
+              produced a smaller predicted good-printability region. Nevertheless, the validated parameter sets
+              reached 99.99% optical-microscopy density at both layer thicknesses. Under the conservative
+              hatch-spacing criterion, maximum volumetric build rates were 7.102 mm³/s at 60 μm and 6.922 mm³/s
+              at 90 μm.
             </p>
             <p>
-              Under the conservative maximum hatch-spacing criterion, the highest measured volumetric build
-              rates were 7.102 mm³/s for 60 μm and 6.922 mm³/s for 90 μm. The larger layer thickness therefore
-              did not raise the maximum build rate in this study, although using 90 μm can reduce the number of
-              layers needed for a given part height.
-            </p>
-            <p>
-              Tensile tests showed higher average ultimate tensile and yield strengths for the 60 μm group.
-              Average ultimate tensile strength was 1047.3 MPa for 60 μm and 1021.1 MPa for 90 μm, while the
-              average yield strengths were 754.1 MPa and 647.1 MPa, respectively. The study found no
-              statistically significant difference in average elongation at fracture or toughness. Some 90 μm
-              specimens showed premature fracture associated with lack-of-fusion porosity, even though their
-              selected parameters fell within the predicted good-printability region.
+              The 60 μm specimens had higher mean ultimate tensile strength (1047.3 versus 1021.1 MPa) and
+              yield strength (754.1 versus 647.1 MPa). Elongation and toughness did not differ significantly.
+              Premature fracture in some 90 μm specimens was associated with lack-of-fusion porosity, showing
+              that density measurements and predicted process windows should be interpreted alongside
+              mechanical validation.
             </p>
           </div>
 
           <div class="results-figures">
-            <figure class="research-figure">
-              <img
-                class="figure-image"
-                src={`${import.meta.env.BASE_URL}/images/research/lpbf1-tamu/fig2.png`}
-                alt="Optical microscopy relative density for selected cubes at 60 μm and 90 μm layer thicknesses"
-                loading="lazy"
-              />
-              <figcaption>
-                Relative density using optical microscopy imaging of the selected cubes for (a) 60 μm and (b) 90 μm layer thicknesses.
-              </figcaption>
-            </figure>
-
             <figure class="research-figure">
               <img
                 class="figure-image"
@@ -223,7 +145,19 @@ const findings = [
                 loading="lazy"
               />
               <figcaption>
-                Printability maps for 60 μm and 90 μm layer thicknesses with the volumetric build-rate contours superimposed.
+                Printability maps for 60 μm and 90 μm layer thicknesses with volumetric build-rate contours.
+              </figcaption>
+            </figure>
+
+            <figure class="research-figure">
+              <img
+                class="figure-image"
+                src={`${import.meta.env.BASE_URL}/images/research/lpbf1-tamu/fig2.png`}
+                alt="Predicted printability regions with measured optical-microscopy densities for validation cubes"
+                loading="lazy"
+              />
+              <figcaption>
+                Predicted printability regions with measured optical-microscopy densities for selected validation cubes.
               </figcaption>
             </figure>
           </div>
@@ -242,18 +176,14 @@ const findings = [
 
       <section class="conclusions-section">
         <div class="section-inner">
-          <h2>Conclusions and Outlook</h2>
+          <h2>Research Significance</h2>
           <div class="conclusions-content">
             <p>
-              The study demonstrates a way to search a broad L-PBF parameter space while accounting for
-              individual process parameters and major porosity mechanisms. Its maps supported the selection
-              of high-density nickel alloy 718 builds at both 60 μm and 90 μm layer thicknesses.
-            </p>
-            <p>
-              Increasing layer thickness reduced the good-printability region and did not increase the maximum
-              volumetric build rate under the conservative hatch-spacing rule. The results point to hatch-spacing
-              optimization as a route to improving productivity, while the premature failures observed in some
-              90 μm specimens show that the predicted process window can benefit from further validation.
+              The framework provides a transferable alternative to single-value energy-density optimization by
+              preserving the effects of laser power, scan speed, hatch spacing, and layer thickness. Although
+              90 μm layers narrowed the admissible process window, they can reduce recoating time at a comparable
+              build rate; further hatch-spacing optimization and mechanical validation are needed to realize that
+              productivity advantage reliably.
             </p>
           </div>
         </div>

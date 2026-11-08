@@ -1,0 +1,65 @@
+---
+import ResearchProjectPage from "../../components/ResearchProjectPage.astro";
+
+const project = {
+  title: "Process–Structure–Property Relationships in Laser Wire Directed Energy Deposition of CuCrZr",
+  description: "An experimental and computational study of how laser wire deposition conditions affect CuCrZr track geometry, microstructure, and local mechanical response.",
+  status: "Ongoing Research (Unpublished)",
+  overviewTitle: "Research Summary",
+  overview: [
+    "Copper–chromium–zirconium (CuCrZr) is a precipitation-hardenable copper alloy of interest for thermal management because of its thermal and electrical conductivity. This project investigates how laser scan speed and wire feed rate affect the geometry, microstructure, and local mechanical response of CuCrZr tracks deposited by laser wire directed energy deposition (LW-DED). The study combines single-track experiments, post-indentation profiling (PIP), and FLOW-3D simulations to relate deposition conditions to material properties.",
+  ],
+  objectives: [
+    {
+      number: "01",
+      title: "Identify a processing window for CuCrZr",
+      description: "Quantify how scan speed and wire feed rate affect track geometry, consolidation, and deposition stability.",
+    },
+    {
+      number: "02",
+      title: "Link microstructure to local mechanical response",
+      description: "Characterize microstructural variation across deposited tracks and use PIP to assess how local mechanical response varies with position and processing conditions.",
+    },
+    {
+      number: "03",
+      title: "Explain deposition behavior through simulation",
+      description: "Use FLOW-3D to investigate how changes in process settings affect heat transfer, melt-pool flow, and track formation.",
+    },
+  ],
+  approachTitle: "Research Methodology",
+  methodLead: "The study pairs measurements from single-track deposits with simulations of the thermal and fluid-flow behavior during deposition.",
+  methodSteps: [
+    {
+      number: "01",
+      title: "Build experimental process maps",
+      description: "Deposit single tracks using CuCrZr wire on stainless steel substrates. Vary scan speed and wire feed rate systematically, then map track geometry, consolidation, and deposition stability across the tested conditions.",
+    },
+    {
+      number: "02",
+      title: "Characterize microstructure across tracks",
+      description: "Examine how microstructure varies within and among deposited tracks, and relate those observations to the processing conditions and associated thermal histories.",
+    },
+    {
+      number: "03",
+      title: "Assess local mechanical response",
+      description: "Apply post-indentation profiling at different locations in the deposited material to assess spatial variation in mechanical response and compare it with the observed microstructure.",
+    },
+    {
+      number: "04",
+      title: "Simulate heat transfer and melt-pool flow",
+      description: "Develop FLOW-3D simulations to investigate how scan speed and wire feed rate influence energy distribution, melt-pool behavior, and deposition geometry.",
+    },
+    {
+      number: "05",
+      title: "Connect processing, structure, and properties",
+      description: "Combine the process maps, microstructural observations, indentation measurements, and simulation predictions to assess how deposition conditions influence local material properties.",
+    },
+  ],
+  conclusionTitle: "Expected Impact",
+  conclusion: [
+    "The study aims to identify processing conditions that support stable CuCrZr deposition and clarify how those conditions affect local material properties. These relationships could inform process development for copper alloys used in thermal management.",
+  ],
+};
+---
+
+<ResearchProjectPage {...project} />

@@ -1,189 +1,82 @@
-
 ---
+import SiteHeader from "../../components/SiteHeader.astro";
+
 const title =
   "Mechanically Alloyed Magnesium-Based Nanostructured Alloy Powders for Biomedical Applications";
-
 const authors = "P. Morcos, K. I. ElKhodary, and H. G. Salem";
 const publication = "Magnesium Technology 2017";
 const doi = "https://doi.org/10.1007/978-3-319-52392-7_9";
 
-const objectives = [
+const methods = [
   {
     number: "01",
-    title: "Develop nanostructured ZK50 powders",
-    description:
-      "Investigate mechanical alloying of Mg, Zn, and Zr elemental powders to produce a magnesium-based alloy.",
-  },
-  {
-    number: "02",
-    title: "Understand powder evolution",
-    description:
-      "Evaluate the influence of milling time on particle morphology, crystallite size, and lattice strain.",
-  },
-  {
-    number: "03",
-    title: "Consolidate the powders",
-    description:
-      "Explore hot pipe rolling as a route to produce thin sheets from mechanically alloyed powders.",
-  },
-];
-
-const processSteps = [
-  {
-    number: "01",
-    title: "Powder preparation",
-    description:
-      "Elemental Mg, Zn, and Zr powders were mixed under argon. The nominal alloy composition was Mg–5Zn–0.5Zr (wt.%).",
-  },
-  {
-    number: "02",
     title: "Mechanical alloying",
     description:
-      "High-energy planetary ball milling was performed using a ball-to-powder ratio of 15:1, with ethanol used as a process control agent.",
+      "Elemental Mg, Zn, and Zr powders were blended to Mg-5Zn-0.5Zr (wt.%) under argon and milled for 45 h in a high-energy planetary mill using a 15:1 ball-to-powder ratio and ethanol as a process-control agent.",
+  },
+  {
+    number: "02",
+    title: "Powder characterization",
+    description:
+      "SEM tracked particle morphology and size, while XRD quantified phase evolution, crystallite refinement, and lattice strain as milling progressed.",
   },
   {
     number: "03",
-    title: "Powder characterization",
+    title: "Consolidation and testing",
     description:
-      "Powder morphology and particle size were examined using SEM, while XRD was used to investigate phase evolution, crystallite size, and lattice strain.",
-  },
-  {
-    number: "04",
-    title: "Powder consolidation",
-    description:
-      "Milled powders were canned in copper pipes and consolidated through hot pipe rolling at 300 °C, followed by process annealing.",
+      "The milled powder was sealed in copper tubes, hot rolled at 300 °C with intermediate reheating, and evaluated using XRD, microscopy, and nanoindentation.",
   },
 ];
 
 const findings = [
-  {
-    value: "600 nm",
-    label: "Particle size",
-    description: "Reported after 45 hours of milling.",
-  },
-  {
-    value: "8.8 nm",
-    label: "Crystallite size",
-    description: "Nanocrystalline structure reported in the study.",
-  },
-  {
-    value: "3.0 GPa",
-    label: "Hardness",
-    description: "Measured for the first consolidation condition.",
-  },
-  {
-    value: "68 GPa",
-    label: "Young's modulus",
-    description: "Measured for the first consolidation condition.",
-  },
+  { value: "45 h", label: "Complete alloying", description: "Elemental peaks largely disappeared after prolonged milling." },
+  { value: "600 nm", label: "Particle size", description: "Average particle size after 45 h of milling." },
+  { value: "8.83 nm", label: "Crystallite size", description: "Nanocrystalline powder produced by mechanical alloying." },
+  { value: "3.0 GPa", label: "Peak hardness", description: "Measured for the shorter annealing condition." },
 ];
 ---
 
+<!doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta
-      name="description"
-      content="Mechanical alloying and consolidation of nanostructured Mg-Zn-Zr powders for biomedical applications."
-    />
+    <meta name="description" content="Mechanical alloying and consolidation of nanostructured Mg-Zn-Zr powders for potential biomedical applications." />
+    <link rel="icon" href={`${import.meta.env.BASE_URL}/favicon.svg`} />
     <title>{title} | Peter Morcos</title>
   </head>
-
   <body>
-    <header class="site-header">
-      <a href={`${import.meta.env.BASE_URL}/`} class="site-name">Peter Morcos, PhD</a>
-
-      <nav aria-label="Main navigation">
-        <a href={`${import.meta.env.BASE_URL}/`}>Home</a>
-        <a href={`${import.meta.env.BASE_URL}/about/`}>About</a>
-        <a href={`${import.meta.env.BASE_URL}/research/`} class="active">Research</a>
-        <a href={`${import.meta.env.BASE_URL}/publications/`}>Publications</a>
-        <a href={`${import.meta.env.BASE_URL}/teaching/`}>Teaching</a>
-        <a href={`${import.meta.env.BASE_URL}/cv/`}>CV</a>
-        <a href={`${import.meta.env.BASE_URL}/contact/`}>Contact</a>
-      </nav>
-    </header>
-
+    <SiteHeader />
     <main>
-      <!-- PROJECT INTRODUCTION -->
       <section class="project-intro">
         <div class="section-inner">
           <a href={`${import.meta.env.BASE_URL}/research/`} class="back-link">← Back to Research</a>
-
           <h1>{title}</h1>
-
           <p class="project-authors">{authors}</p>
           <p class="project-publication">{publication}</p>
-
           <div class="project-meta">
-            <span class="project-status">Completed Research</span>
-            <a href={doi} target="_blank" rel="noopener noreferrer">
-              View Publication ↗
-            </a>
+            <span class="project-status">Published Research</span>
+            <a href={doi} target="_blank" rel="noopener noreferrer">View Publication ↗</a>
           </div>
         </div>
       </section>
 
-      <!-- OVERVIEW -->
       <section class="overview-section">
-        <div class="section-inner">
-          <h2>Research Overview</h2>
-
-          <div class="overview-content">
-            <p>
-              Magnesium alloys have attracted interest for biomedical
-              applications because of their low density, relatively low
-              elastic modulus, and potential for biodegradable implant
-              applications. However, developing suitable magnesium-based
-              materials requires careful control of alloy composition,
-              microstructure, and mechanical properties.
-            </p>
-
-            <p>
-              This study investigated the production of nanostructured
-              Mg–Zn–Zr (ZK50) alloy powders through high-energy mechanical
-              alloying. The evolution of powder morphology, particle size,
-              crystallite size, and lattice strain was examined as a function
-              of milling time. The mechanically alloyed powders were then
-              consolidated into thin sheets using hot pipe rolling.
-            </p>
-          </div>
+        <div class="section-inner content-width">
+          <h2>Research Summary</h2>
+          <p>
+            This study developed a powder-metallurgy route for producing nanostructured ZK50 magnesium alloy from elemental Mg, Zn, and Zr powders. High-energy mechanical alloying was used to refine and alloy the powder, followed by hot pipe rolling to consolidate it into thin sheets. The work examined whether this processing sequence could retain a refined structure and provide mechanical properties relevant to future biodegradable-material development.
+          </p>
         </div>
       </section>
 
-      <!-- OBJECTIVES -->
-      <section class="objectives-section">
-        <div class="section-inner">
-          <h2>Research Objectives</h2>
-
-          <div class="objectives-grid">
-            {objectives.map((item) => (
-              <article class="objective-card">
-                <span class="card-number">{item.number}</span>
-                <h3>{item.title}</h3>
-                <p>{item.description}</p>
-              </article>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      <!-- METHODOLOGY -->
       <section class="methodology-section">
         <div class="section-inner">
-          <h2>Experimental Methodology</h2>
-
-          <p class="section-lead">
-            The study combined high-energy mechanical alloying, powder
-            characterization, and hot pipe rolling to investigate the
-            production of nanostructured magnesium alloy sheets.
-          </p>
-
+          <h2>Methodology</h2>
           <div class="process-list">
-            {processSteps.map((step) => (
+            {methods.map((step) => (
               <article class="process-item">
-                <div class="process-number">{step.number}</div>
+                <span>{step.number}</span>
                 <div>
                   <h3>{step.title}</h3>
                   <p>{step.description}</p>
@@ -194,825 +87,116 @@ const findings = [
         </div>
       </section>
 
-      <!-- POWDER EVOLUTION -->
-      <section class="results-section">
+      <section class="findings-section">
         <div class="section-inner">
-          <h2 class="results-heading">Results and Discussion</h2>
-          <p class="results-subtitle">Evolution of the Mechanically Alloyed Powders</p>
-
-          <div class="results-content">
+          <h2>Key Findings</h2>
+          <div class="content-width findings-copy">
             <p>
-              Mechanical alloying produced substantial changes in powder
-              morphology and microstructure. Initial milling was dominated
-              by cold welding between particles. With continued milling,
-              particle refinement became more pronounced, accompanied by
-              changes in the powder morphology and the development of
-              agglomerated structures.
+              Milling progressively refined the powder and broadened the Mg diffraction peaks. The characteristic elemental peaks were nearly eliminated between 38 and 43 h, and complete alloying was reported after 45 h. At that stage, the average particle size was approximately 600 nm and the crystallite size was 8.83 nm.
             </p>
-
             <p>
-              The average particle size decreased to approximately 1.3 μm
-              after 19 hours of milling and reached approximately 600 nm
-              after 45 hours. X-ray diffraction also revealed progressive
-              changes in the constituent phases. The disappearance of
-              characteristic elemental peaks was observed between
-              approximately 38 and 43 hours, indicating the development of
-              the alloyed structure.
-            </p>
-
-            <p>
-              The study reported a crystallite size of approximately 8.8 nm
-              and increasing lattice strain with milling time, demonstrating
-              the development of a nanostructured powder.
-            </p>
-          </div>
-
-          <div class="figure-grid">
-            <figure class="research-figure">
-              <img
-                class="figure-image"
-                src={`${import.meta.env.BASE_URL}/images/research/mg-auc/fig1.png`}
-                alt="SEM micrographs of Mg–Zn–Zr powder at different milling times"
-                loading="lazy"
-              />
-              <figcaption>
-                SEM micrographs showing the evolution of powder morphology during mechanical alloying.
-              </figcaption>
-            </figure>
-
-            <figure class="research-figure">
-              <div class="figure-image-frame figure-2-frame">
-                <img
-                  class="figure-image figure-2-image"
-                  src={`${import.meta.env.BASE_URL}/images/research/mg-auc/fig2.png`}
-                  alt="Average powder particle size versus milling time"
-                  loading="lazy"
-                />
-              </div>
-              <figcaption>
-                Average particle size as a function of milling time.
-              </figcaption>
-            </figure>
-
-            <figure class="research-figure">
-              <img
-                class="figure-image"
-                src={`${import.meta.env.BASE_URL}/images/research/mg-auc/fig3.png`}
-                alt="X-ray diffraction patterns of Mg, Zn, and Zr powders at different milling times"
-                loading="lazy"
-              />
-              <figcaption>
-                X-ray diffraction patterns showing phase evolution during mechanical alloying.
-              </figcaption>
-            </figure>
-
-            <figure class="research-figure">
-              <img
-                class="figure-image"
-                src={`${import.meta.env.BASE_URL}/images/research/mg-auc/fig4.png`}
-                alt="Crystallite size and lattice strain versus milling time"
-                loading="lazy"
-              />
-              <figcaption>
-                Crystallite size and lattice strain as a function of milling time.
-              </figcaption>
-            </figure>
-          </div>
-        </div>
-      </section>
-
-      <!-- CONSOLIDATION -->
-      <section class="consolidation-section">
-        <div class="section-inner">
-          <h2>Consolidation of Nanostructured Powders</h2>
-
-          <div class="results-content">
-            <p>
-              The mechanically alloyed powders were consolidated into thin
-              sheets using hot pipe rolling. The powders were first sealed
-              inside copper pipes under argon and subsequently rolled at
-              300 °C. Reheating was performed during the rolling process to
-              facilitate consolidation.
-            </p>
-
-            <p>
-              Two rolling conditions were investigated. The first involved
-              11 passes and a total thickness reduction of 67%, producing
-              sheets with an average thickness of approximately 800 μm.
-              The second involved 12 passes and a 72% reduction, producing
-              sheets approximately 720 μm thick.
-            </p>
-
-            <p>
-              Microstructural characterization revealed changes in
-              crystallite size following consolidation and annealing.
-              The study also identified needle-like, flower-like, and
-              dimple-like features in the consolidated material.
-            </p>
-          </div>
-
-          <div class="figure-grid two-figures">
-            <figure class="research-figure">
-              <img
-                class="figure-image"
-                src={`${import.meta.env.BASE_URL}/images/research/mg-auc/fig5.png`}
-                alt="SEM micrographs of the consolidated Mg–Zn–Zr sheet"
-                loading="lazy"
-              />
-              <figcaption>
-                SEM micrographs showing the consolidated sheet microstructure and observed features.
-              </figcaption>
-            </figure>
-          </div>
-        </div>
-      </section>
-
-      <!-- MECHANICAL PROPERTIES -->
-      <section class="mechanical-section">
-        <div class="section-inner">
-          <h2>Mechanical Properties</h2>
-
-          <div class="results-content">
-            <p>
-              Nanoindentation was used to evaluate the mechanical response
-              of the consolidated sheets. The first consolidation condition
-              exhibited a hardness of approximately 3 GPa and a Young's
-              modulus of 68 GPa. The second condition exhibited a lower
-              hardness of approximately 2.1 GPa and a Young's modulus of
-              53.2 GPa.
-            </p>
-
-            <p>
-              The differences were associated with the microstructural
-              changes resulting from the different consolidation and
-              annealing conditions. In particular, the longer annealing
-              treatment in the second condition was associated with
-              increased crystallite coarsening.
+              Hot pipe rolling produced consolidated sheets approximately 800 and 720 μm thick under the two processing conditions. The longer annealing treatment produced greater crystallite coarsening and lower mechanical response: hardness decreased from 3.0 to 2.1 GPa and Young's modulus decreased from 68 to 53.2 GPa.
             </p>
           </div>
 
           <div class="metrics-grid">
             {findings.map((item) => (
               <article class="metric-card">
-                <span class="metric-value">{item.value}</span>
+                <span>{item.value}</span>
                 <h3>{item.label}</h3>
                 <p>{item.description}</p>
               </article>
             ))}
           </div>
 
-          <figure class="research-figure mechanical-figure">
-            <img
-              class="figure-image"
-              src={`${import.meta.env.BASE_URL}/images/research/mg-auc/fig6.png`}
-              alt="Nanoindentation load versus displacement curves for two consolidation conditions"
-              loading="lazy"
-            />
-            <figcaption>
-              Nanoindentation load–displacement curves for the two consolidation conditions.
-            </figcaption>
-          </figure>
-        </div>
-      </section>
-
-      <!-- CONCLUSIONS -->
-      <section class="conclusions-section">
-        <div class="section-inner">
-          <h2>Conclusions and Outlook</h2>
-
-          <div class="conclusions-content">
-            <p>
-              This work demonstrated a route for producing nanostructured
-              Mg–Zn–Zr alloy powders through high-energy mechanical alloying
-              and consolidating them into thin sheets through hot pipe rolling.
-              The results showed substantial powder refinement and the
-              development of a nanocrystalline structure with continued milling.
-            </p>
-
-            <p>
-              The consolidation experiments demonstrated that mechanically
-              alloyed powders could be processed into thin sheets, while
-              highlighting the influence of processing and annealing
-              conditions on the resulting microstructure and mechanical
-              properties.
-            </p>
-
-            <p>
-              The work provides an experimental foundation for further
-              investigation of nanostructured magnesium-based materials
-              for potential biomedical applications.
-            </p>
+          <div class="figure-grid">
+            <figure>
+              <img src={`${import.meta.env.BASE_URL}/images/research/mg-auc/fig1.png`} alt="SEM micrographs of ZK50 powder after different mechanical-alloying times" loading="lazy" />
+              <figcaption>SEM micrographs showing powder morphology after 3, 5, 10, 19, 31, 40, and 45 h of mechanical alloying.</figcaption>
+            </figure>
+            <figure>
+              <img src={`${import.meta.env.BASE_URL}/images/research/mg-auc/fig3.png`} alt="X-ray diffraction patterns of elemental and mechanically alloyed Mg-Zn-Zr powders" loading="lazy" />
+              <figcaption>XRD patterns showing the disappearance of elemental peaks and the development of the alloyed structure with milling time.</figcaption>
+            </figure>
           </div>
         </div>
       </section>
 
-      <!-- PUBLICATION -->
+      <section class="significance-section">
+        <div class="section-inner content-width">
+          <h2>Research Significance</h2>
+          <p>
+            The study demonstrated that mechanical alloying followed by hot pipe rolling can produce nanostructured Mg-Zn-Zr powder and consolidated thin sheets. It established processing feasibility and clarified the effect of annealing on structural coarsening and mechanical response. Corrosion, degradation, and biological performance were outside the scope of this work and remain necessary before biomedical use can be assessed.
+          </p>
+        </div>
+      </section>
+
       <section class="publication-section">
         <div class="section-inner">
           <h2>Related Publication</h2>
-
           <div class="publication-card">
             <p class="publication-label">BOOK CHAPTER · 2017</p>
             <h3>{title}</h3>
             <p>{authors}</p>
             <p class="publication-name">{publication}</p>
-            <a href={doi} target="_blank" rel="noopener noreferrer">
-              Read publication ↗
-            </a>
+            <a href={doi} target="_blank" rel="noopener noreferrer">Read publication ↗</a>
           </div>
         </div>
       </section>
     </main>
-
-    <footer class="site-footer">
-      <p>© {new Date().getFullYear()} Peter Morcos. All rights reserved.</p>
-    </footer>
+    <footer><p>© {new Date().getFullYear()} Peter Morcos. All rights reserved.</p></footer>
   </body>
 </html>
 
 <style>
-  :root {
-    --ink: #172d35;
-    --muted: #687a7e;
-    --accent: #168b83;
-    --line: #e3e9e8;
-    --soft: #f5f8f7;
-  }
-
-  * {
-    box-sizing: border-box;
-  }
-
-  body {
-    margin: 0;
-    font-family: Arial, Helvetica, sans-serif;
-    color: var(--ink);
-    background: white;
-    line-height: 1.7;
-  }
-
-  /* HEADER */
-
-  .site-header {
-    padding: 22px 10%;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 30px;
-    border-bottom: 1px solid var(--line);
-    background: white;
-  }
-
-  .site-name {
-    color: var(--ink);
-    font-size: 22px;
-    font-weight: 700;
-    text-decoration: none;
-    white-space: nowrap;
-  }
-
-  nav {
-    display: flex;
-    align-items: center;
-    gap: 27px;
-  }
-
-  nav a {
-    color: var(--muted);
-    text-decoration: none;
-    font-size: 15px;
-    font-weight: 600;
-    transition: color 0.2s ease;
-  }
-
-  nav a:hover,
-  nav a.active {
-    color: var(--accent);
-  }
-
-  .section-inner {
-    width: 80%;
-    max-width: 1250px;
-    margin: 0 auto;
-  }
-
-  h1,
-  h2,
-  h3,
-  h4 {
-    color: var(--ink);
-    line-height: 1.3;
-  }
-
-  h2 {
-    font-size: 30px;
-    margin: 0 0 30px;
-  }
-
-  .eyebrow {
-    color: var(--accent);
-    font-size: 13px;
-    font-weight: 700;
-    letter-spacing: 2px;
-    margin: 0 0 15px;
-  }
-
-  /* PROJECT INTRO */
-
-  .project-intro {
-    padding: 55px 0 65px;
-  }
-
-  .back-link {
-    display: inline-block;
-    color: var(--muted);
-    text-decoration: none;
-    font-size: 14px;
-    font-weight: 600;
-    margin-bottom: 35px;
-  }
-
-  .back-link:hover {
-    color: var(--accent);
-  }
-
-  .project-intro h1 {
-    max-width: 1050px;
-    font-size: 42px;
-    line-height: 1.25;
-    margin: 0 0 22px;
-  }
-
-  .project-authors {
-    color: #455b61;
-    font-size: 17px;
-    margin: 0 0 4px;
-  }
-
-  .project-publication {
-    color: var(--muted);
-    font-size: 15px;
-    margin: 0;
-  }
-
-  .project-meta {
-    display: flex;
-    align-items: center;
-    gap: 25px;
-    margin-top: 25px;
-  }
-
-  .project-status {
-    display: inline-block;
-    color: var(--accent);
-    background: #eaf5f3;
-    padding: 5px 13px;
-    border-radius: 4px;
-    font-size: 13px;
-    font-weight: 700;
-  }
-
-  .project-meta a,
-  .publication-card a {
-    color: var(--accent);
-    text-decoration: none;
-    font-size: 14px;
-    font-weight: 700;
-  }
-
-  .project-meta a:hover,
-  .publication-card a:hover {
-    text-decoration: underline;
-  }
-
-  /* GENERAL CONTENT */
-
-  .overview-section,
-  .methodology-section,
-  .consolidation-section,
-  .mechanical-section,
-  .publication-section {
-    padding: 70px 0 80px;
-  }
-
-  .overview-content,
-  .results-content,
-  .conclusions-content {
-    max-width: 1000px;
-  }
-
-  .overview-content p,
-  .results-content p,
-  .conclusions-content p {
-    color: #455b61;
-    font-size: 17px;
-    line-height: 1.9;
-    margin: 0 0 20px;
-    text-align: justify;
-  }
-
-  /* OBJECTIVES */
-
-  .objectives-section,
-  .results-section,
-  .conclusions-section {
-    padding: 70px 0 80px;
-    background: var(--soft);
-  }
-
-  .objectives-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 22px;
-  }
-
-  .objective-card {
-    background: white;
-    border: 1px solid var(--line);
-    border-radius: 8px;
-    padding: 27px;
-  }
-
-  .card-number {
-    color: var(--accent);
-    font-size: 14px;
-    font-weight: 700;
-  }
-
-  .objective-card h3 {
-    font-size: 19px;
-    margin: 15px 0 10px;
-  }
-
-  .objective-card p {
-    color: #52676d;
-    font-size: 15px;
-    line-height: 1.8;
-    margin: 0;
-    text-align: justify;
-  }
-
-  /* METHODOLOGY */
-
-  .section-lead {
-    max-width: 900px;
-    color: #52676d;
-    font-size: 17px;
-    line-height: 1.8;
-    margin: -10px 0 35px;
-    text-align: justify;
-  }
-
-  .process-list {
-    max-width: 1000px;
-  }
-
-  .process-item {
-    display: grid;
-    grid-template-columns: 55px 1fr;
-    gap: 22px;
-    padding: 22px 0;
-    border-bottom: 1px solid var(--line);
-  }
-
-  .process-item:last-child {
-    border-bottom: none;
-  }
-
-  .process-number {
-    color: var(--accent);
-    font-size: 19px;
-    font-weight: 700;
-  }
-
-  .process-item h3 {
-    font-size: 19px;
-    margin: 0 0 7px;
-  }
-
-  .process-item p {
-    color: #52676d;
-    font-size: 15px;
-    line-height: 1.8;
-    margin: 0;
-    text-align: justify;
-  }
-
-  /* FIGURES */
-
-  .figure-grid {
-    display: grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 30px;
-    margin-top: 40px;
-  }
-
-  .figure-grid:not(.two-figures) > .research-figure:nth-child(1) {
-    grid-row: 1;
-    grid-column: 1;
-  }
-
-  .figure-grid:not(.two-figures) > .research-figure:nth-child(2) {
-    grid-row: 2;
-    grid-column: 1;
-  }
-
-  .figure-grid:not(.two-figures) > .research-figure:nth-child(3) {
-    grid-row: 1;
-    grid-column: 2;
-  }
-
-  .figure-grid:not(.two-figures) > .research-figure:nth-child(4) {
-    grid-row: 2;
-    grid-column: 2;
-  }
-
-  .research-figure {
-    margin: 0;
-    min-width: 0;
-  }
-
-  .figure-image {
-    display: block;
-    width: 100%;
-    height: auto;
-    background: white;
-    border: 1px solid var(--line);
-    border-radius: 6px;
-  }
-
-  .figure-image-frame {
-    overflow: hidden;
-    background: white;
-    border: 1px solid var(--line);
-    border-radius: 6px;
-  }
-
-  .figure-2-frame {
-    aspect-ratio: 1.62;
-  }
-
-  .figure-2-image {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    object-position: right center;
-    border: 0;
-    border-radius: 0;
-  }
-
-  .results-heading {
-    color: var(--ink);
-    font-size: 34px;
-    margin-bottom: 8px;
-  }
-
-  .results-subtitle {
-    color: var(--accent);
-    font-size: 22px;
-    font-weight: 600;
-    line-height: 1.4;
-    margin: 0 0 28px;
-  }
-
-  .figure-placeholder {
-    min-height: 260px;
-    padding: 25px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    background: white;
-    border: 1px dashed #b9cdca;
-    border-radius: 6px;
-  }
-
-  .figure-placeholder span {
-    color: var(--accent);
-    font-size: 13px;
-    font-weight: 700;
-    letter-spacing: 1px;
-    margin-bottom: 12px;
-  }
-
-  .figure-placeholder p {
-    max-width: 320px;
-    color: var(--muted);
-    font-size: 14px;
-    margin: 0;
-  }
-
-  .research-figure figcaption {
-    color: var(--muted);
-    font-size: 15px;
-    line-height: 1.6;
-    margin-top: 12px;
-    text-align: center;
-  }
-
-  .two-figures {
-    grid-template-columns: minmax(0, 1fr);
-  }
-
-  .two-figures > .research-figure {
-    width: min(100%, 900px);
-    margin-inline: auto;
-  }
-
-  .mechanical-figure {
-    max-width: 750px;
-    margin: 35px auto 0;
-    text-align: center;
-  }
-
-  /* METRICS */
-
-  .metrics-grid {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 18px;
-    margin-top: 35px;
-  }
-
-  .metric-card {
-    padding: 23px 18px;
-    background: var(--soft);
-    border: 1px solid var(--line);
-    border-radius: 7px;
-  }
-
-  .metric-value {
-    display: block;
-    color: var(--accent);
-    font-size: 27px;
-    font-weight: 700;
-    line-height: 1.3;
-  }
-
-  .metric-card h3 {
-    font-size: 15px;
-    margin: 9px 0 5px;
-  }
-
-  .metric-card p {
-    color: var(--muted);
-    font-size: 13px;
-    line-height: 1.6;
-    margin: 0;
-  }
-
-  /* PUBLICATION */
-
-  .publication-card {
-    max-width: 900px;
-    padding: 30px;
-    border: 1px solid var(--line);
-    border-left: 4px solid var(--accent);
-    border-radius: 6px;
-    background: white;
-  }
-
-  .publication-label {
-    color: var(--accent);
-    font-size: 12px;
-    font-weight: 700;
-    letter-spacing: 1.5px;
-    margin: 0 0 12px;
-  }
-
-  .publication-card h3 {
-    font-size: 20px;
-    margin: 0 0 12px;
-  }
-
-  .publication-card p:not(.publication-label) {
-    color: #52676d;
-    font-size: 14px;
-    margin: 5px 0;
-  }
-
-  .publication-card .publication-name {
-    margin-bottom: 18px;
-  }
-
-  /* FOOTER */
-
-  .site-footer {
-    padding: 22px 10%;
-    text-align: center;
-    border-top: 1px solid var(--line);
-  }
-
-  .site-footer p {
-    color: var(--muted);
-    font-size: 13px;
-    margin: 0;
-  }
-
-  /* RESPONSIVE DESIGN */
-
-  @media (max-width: 1000px) {
-    .site-header {
-      padding-left: 5%;
-      padding-right: 5%;
-    }
-
-    nav {
-      gap: 15px;
-    }
-
-    .section-inner {
-      width: 90%;
-    }
-
-    .metrics-grid {
-      grid-template-columns: repeat(2, 1fr);
-    }
-  }
-
-  @media (max-width: 700px) {
-    .site-header {
-      flex-direction: column;
-      gap: 15px;
-    }
-
-    nav {
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 12px 18px;
-    }
-
-    nav a {
-      font-size: 14px;
-    }
-
-    .project-intro h1 {
-      font-size: 32px;
-    }
-
-    h2 {
-      font-size: 27px;
-    }
-
-    .project-intro,
-    .overview-section,
-    .objectives-section,
-    .methodology-section,
-    .results-section,
-    .consolidation-section,
-    .mechanical-section,
-    .conclusions-section,
-    .publication-section {
-      padding-top: 48px;
-      padding-bottom: 55px;
-    }
-
-    .overview-content p,
-    .results-content p,
-    .conclusions-content p,
-    .section-lead {
-      font-size: 16px;
-    }
-
-    .results-heading {
-      font-size: 30px;
-    }
-
-    .results-subtitle {
-      font-size: 19px;
-    }
-
-    .objectives-grid,
-    .figure-grid {
-      grid-template-columns: 1fr;
-    }
-
-    .figure-grid:not(.two-figures) > .research-figure:nth-child(n) {
-      grid-row: auto;
-      grid-column: 1;
-    }
-
-    .metrics-grid {
-      grid-template-columns: repeat(2, 1fr);
-      gap: 12px;
-    }
-
-    .metric-card {
-      padding: 18px 14px;
-    }
-
-    .metric-value {
-      font-size: 23px;
-    }
-
-    .project-meta {
-      flex-wrap: wrap;
-      gap: 15px;
-    }
-
-    .figure-placeholder {
-      min-height: 210px;
-    }
+  :root { --ink:#172d35; --muted:#687a7e; --accent:#168b83; --line:#e3e9e8; --soft:#f5f8f7; }
+  * { box-sizing:border-box; }
+  body { margin:0; color:var(--ink); background:white; font-family:Arial,Helvetica,sans-serif; line-height:1.7; }
+  .section-inner { width:80%; max-width:1250px; margin:0 auto; }
+  .content-width { max-width:1000px; }
+  h1,h2,h3 { color:var(--ink); line-height:1.3; }
+  h2 { margin:0 0 28px; font-size:30px; }
+  p { color:#455b61; }
+  .project-intro { padding:55px 0 65px; }
+  .back-link { display:inline-block; margin-bottom:28px; color:var(--accent); font-weight:700; text-decoration:none; }
+  .back-link:hover { text-decoration:underline; }
+  .project-intro h1 { max-width:1050px; margin:0 0 22px; font-size:42px; }
+  .project-authors { margin:0 0 4px; font-size:16px; }
+  .project-publication { margin:0; color:var(--muted); font-size:15px; }
+  .project-meta { display:flex; flex-wrap:wrap; align-items:center; gap:22px; margin-top:24px; }
+  .project-status { padding:5px 13px; color:var(--accent); background:#eaf5f3; border-radius:4px; font-size:13px; font-weight:700; }
+  .project-meta a,.publication-card a { color:var(--accent); font-size:14px; font-weight:700; text-decoration:none; }
+  .overview-section,.findings-section,.publication-section { padding:65px 0 75px; }
+  .methodology-section,.significance-section { padding:65px 0 75px; background:var(--soft); }
+  .overview-section p,.findings-copy p,.significance-section p { margin:0 0 18px; font-size:17px; line-height:1.9; text-align:justify; }
+  .process-list { max-width:1000px; }
+  .process-item { display:grid; grid-template-columns:50px 1fr; gap:20px; padding:19px 0; border-bottom:1px solid var(--line); }
+  .process-item:last-child { border-bottom:0; }
+  .process-item > span { color:var(--accent); font-size:18px; font-weight:700; }
+  .process-item h3 { margin:0 0 6px; font-size:19px; }
+  .process-item p { margin:0; font-size:15px; line-height:1.8; text-align:justify; }
+  .metrics-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:16px; margin:32px 0 40px; }
+  .metric-card { padding:22px 18px; background:var(--soft); border:1px solid var(--line); border-radius:7px; }
+  .metric-card > span { color:var(--accent); font-size:24px; font-weight:700; }
+  .metric-card h3 { margin:9px 0 5px; font-size:15px; }
+  .metric-card p { margin:0; color:var(--muted); font-size:13px; line-height:1.6; }
+  .figure-grid { display:grid; grid-template-columns:1fr 1fr; gap:26px; align-items:start; }
+  figure { min-width:0; margin:0; }
+  figure img { display:block; width:100%; height:auto; background:white; border:1px solid var(--line); border-radius:6px; }
+  figcaption { margin-top:11px; color:var(--muted); font-size:15px; line-height:1.6; text-align:center; }
+  .publication-card { max-width:900px; padding:28px 32px; background:var(--soft); border:1px solid var(--line); border-radius:8px; }
+  .publication-label { margin:0 0 10px; color:var(--accent); font-size:12px; font-weight:700; letter-spacing:1px; }
+  .publication-card h3 { margin:0 0 12px; font-size:19px; }
+  .publication-card p { margin:5px 0; font-size:14px; }
+  .publication-card .publication-name { margin-bottom:18px; color:var(--muted); }
+  footer { padding:22px 10%; text-align:center; border-top:1px solid var(--line); }
+  footer p { margin:0; color:var(--muted); font-size:13px; }
+  @media (max-width:1000px) { .section-inner { width:90%; } .metrics-grid { grid-template-columns:repeat(2,1fr); } }
+  @media (max-width:700px) {
+    .project-intro,.overview-section,.methodology-section,.findings-section,.significance-section,.publication-section { padding-top:48px; padding-bottom:55px; }
+    .project-intro h1 { font-size:32px; }
+    h2 { font-size:27px; }
+    .overview-section p,.findings-copy p,.significance-section p,.process-item p { text-align:left; }
+    .figure-grid { grid-template-columns:1fr; }
   }
 </style>

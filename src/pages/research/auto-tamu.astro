@@ -1,0 +1,58 @@
+---
+import ResearchProjectPage from "../../components/ResearchProjectPage.astro";
+
+const project = {
+  title: "An Automated Computational Framework to Construct Printability Maps for Additively Manufactured Metal Alloys",
+  description: "An automated, uncertainty-aware framework that predicts L-PBF printability maps from nominal alloy chemistry and process conditions.",
+  authors: "S. Sheikh, B. Vela, P. Honarmandi, P. Morcos, D. Shoukr, I. Karaman, A. Elwany, and R. Arróyave",
+  publication: "npj Computational Materials 10 (2024), Article 252",
+  doi: "https://doi.org/10.1038/s41524-024-01436-x",
+  overviewTitle: "Research Summary",
+  overview: [
+    "This paper introduced a fully computational framework for predicting L-PBF printability maps directly from nominal alloy chemistry and process ranges. Composition-dependent thermophysical properties were coupled with analytical melt-pool calculations and multiple defect criteria to classify lack-of-fusion, keyholing, balling, and defect-free conditions. The framework was benchmarked against single-track data for five established alloys and then applied to three NiTi shape-memory alloy compositions.",
+  ],
+  objectives: [
+    { number: "01", title: "Eliminate alloy-specific experimental calibration", description: "Generate first-pass printability maps using alloy chemistry and process conditions as the principal inputs." },
+    { number: "02", title: "Benchmark defect criteria across alloys", description: "Evaluate alternative lack-of-fusion, keyholing, and balling criteria using chemically diverse single-track datasets." },
+    { number: "03", title: "Represent model uncertainty", description: "Ensemble competing criteria into probabilistic maps that distinguish agreement from uncertain defect classifications." },
+  ],
+  approachTitle: "Computational Framework",
+  methodLead: "The automated workflow proceeds from composition to a validated process map through four connected stages.",
+  methodSteps: [
+    { number: "01", title: "Calculate thermophysical properties", description: "CALPHAD databases and reduced-order relations estimate composition-dependent properties required for process modeling." },
+    { number: "02", title: "Predict melt-pool geometry", description: "The Eagar–Tsai analytical model calculates melt-pool length, width, and depth over the laser power–scan speed space." },
+    { number: "03", title: "Classify defect regimes", description: "Twelve combinations of lack-of-fusion, keyholing, and balling criteria assign each process condition to a predicted outcome." },
+    { number: "04", title: "Validate and ensemble maps", description: "Predictions are compared with experimental single-track classifications, and accuracy-weighted criteria are combined into probabilistic printability maps." },
+  ],
+  resultsTitle: "Key Findings",
+  resultsSubtitle: "Automated maps approached calibrated performance at substantially lower cost",
+  results: [
+    "Across 316 stainless steel, Ti-6Al-4V, IN718, AF96, and Ni-5Nb, the framework reproduced the principal defect regions while revealing that no single criteria set was optimal for every alloy. Ensembling the twelve criteria combinations converted model disagreement into spatially resolved defect probabilities and exposed alloy-specific limitations, including the balling criterion for Ni-5Nb.",
+    "For the NiTi case study, the best criteria set achieved weighted accuracies of 84%, 87%, and 91% for Ni50.3Ti49.7, Ni50.8Ti49.2, and Ni51.2Ti48.8, respectively. A representative computational map required approximately 2–3 hours, compared with about 10 days for the experimentally calibrated workflow, while providing similar classification performance.",
+  ],
+  findings: [
+    { value: "5", label: "Benchmark alloys", description: "Validation spanned steels, superalloys, titanium, and model alloy systems." },
+    { value: "12", label: "Criteria combinations", description: "Alternative defect definitions were evaluated and ensembled." },
+    { value: "84–91%", label: "NiTi accuracy", description: "Weighted accuracy for the best criteria set across three compositions." },
+    { value: "2–3 h", label: "Map generation", description: "Representative computational runtime versus about 10 days with calibration." },
+  ],
+  figures: [
+    {
+      src: "/images/research/auto-tamu/fig13.png",
+      alt: "Four-stage computational framework for constructing alloy printability maps",
+      caption: "Automated workflow linking composition-dependent thermophysical properties, melt-pool geometry, defect criteria, and printability-map construction.",
+    },
+    {
+      src: "/images/research/auto-tamu/fig9.png",
+      alt: "Validated printability maps for three nickel-titanium alloy compositions",
+      caption: "Best-performing printability maps for three NiTi compositions, with weighted classification accuracies of 84%, 87%, and 91%.",
+    },
+  ],
+  conclusionTitle: "Research Significance",
+  conclusion: [
+    "The framework enables interpretable, composition-aware screening before powder production or extensive process experiments, making it suitable for high-throughput alloy design. It is intended as a first-pass decision tool: prediction quality remains dependent on thermophysical-property models, defect criteria, and the coverage and consistency of single-track validation data.",
+  ],
+};
+---
+
+<ResearchProjectPage {...project} />

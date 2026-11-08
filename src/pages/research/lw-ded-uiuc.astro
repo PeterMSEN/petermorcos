@@ -1,0 +1,65 @@
+---
+import ResearchProjectPage from "../../components/ResearchProjectPage.astro";
+
+const project = {
+  title: "Analytical Modeling of Laser Wire Directed Energy Deposition (LW-DED)",
+  description: "An analytical energy-balance model for wire melting, substrate melting, and track geometry in laser wire directed energy deposition.",
+  status: "Ongoing Research (Unpublished)",
+  overviewTitle: "Research Summary",
+  overview: [
+    "Laser wire directed energy deposition (LW-DED) uses a focused laser to melt metallic wire and deposit it onto a substrate. This project develops an analytical model that accounts separately for the laser energy absorbed by the incoming wire and the substrate. The model aims to explain how laser power, scan speed, and wire feed rate affect melting and the dimensions of the melt pool and deposited track.",
+  ],
+  objectives: [
+    {
+      number: "01",
+      title: "Describe energy transfer to the wire and substrate",
+      description: "Distinguish the laser energy absorbed by each material and assess its role in wire and substrate melting.",
+    },
+    {
+      number: "02",
+      title: "Predict deposition geometry",
+      description: "Relate laser power, scan speed, and wire feed rate to melt-pool and track dimensions.",
+    },
+    {
+      number: "03",
+      title: "Benchmark analytical predictions",
+      description: "Compare predicted trends with independent FLOW-3D simulations across a range of processing conditions.",
+    },
+  ],
+  approachTitle: "Modeling Approach",
+  methodLead: "The model traces how absorbed laser energy drives melting and how that melting shapes the deposited track.",
+  methodSteps: [
+    {
+      number: "01",
+      title: "Partition absorbed laser energy",
+      description: "Formulate separate absorption terms for the wire and substrate, accounting for the interaction geometry and angle of laser incidence.",
+    },
+    {
+      number: "02",
+      title: "Describe wire heating and melting",
+      description: "Relate the energy required to heat and melt the incoming wire at a given feed rate to the laser energy absorbed by the wire.",
+    },
+    {
+      number: "03",
+      title: "Estimate substrate melting",
+      description: "Use the energy absorbed by the substrate and the energy required for melting to estimate its melting response. Account for the interaction between the incoming wire and the molten substrate.",
+    },
+    {
+      number: "04",
+      title: "Predict melt-pool and track dimensions",
+      description: "Link substrate melting and wire deposition to the resulting melt-pool and deposited track geometry.",
+    },
+    {
+      number: "05",
+      title: "Compare with FLOW-3D simulations",
+      description: "Use independent computational fluid dynamics simulations to assess whether the analytical model captures trends as laser power, scan speed, and wire feed rate vary.",
+    },
+  ],
+  conclusionTitle: "Expected Impact",
+  conclusion: [
+    "The analytical model could help researchers screen processing conditions and identify which settings merit more detailed simulation. The comparison with FLOW-3D will help establish where the model can support parameter selection and the development of process windows for LW-DED.",
+  ],
+};
+---
+
+<ResearchProjectPage {...project} />

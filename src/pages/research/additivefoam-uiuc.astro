@@ -1,0 +1,65 @@
+---
+import ResearchProjectPage from "../../components/ResearchProjectPage.astro";
+
+const project = {
+  title: "Automated Calibration of AdditiveFOAM for Laser Powder Bed Fusion",
+  description: "An automated workflow for calibrating AdditiveFOAM simulations against experimental melt-pool width and depth.",
+  status: "Ongoing Research (Unpublished)",
+  overviewTitle: "Research Summary",
+  overview: [
+    "Uncertainty in process and material parameters can affect predictions of melt-pool geometry in laser powder bed fusion (LPBF). This project develops an automated calibration framework for AdditiveFOAM that uses experimental measurements of melt-pool width and depth as simultaneous targets. The workflow combines design of experiments, statistical sensitivity analysis, and iterative optimization to identify parameter sets that meet specified tolerances for both dimensions.",
+  ],
+  objectives: [
+    {
+      number: "01",
+      title: "Quantify parameter sensitivity",
+      description: "Identify which model parameters and interactions most strongly influence predicted melt-pool width and depth.",
+    },
+    {
+      number: "02",
+      title: "Automate simultaneous calibration",
+      description: "Develop a reproducible workflow that fits both dimensions and reduces reliance on manual tuning and unnecessary simulation runs.",
+    },
+  ],
+  approachTitle: "Methodology",
+  methodLead: "The workflow uses sensitivity analysis to guide parameter selection, then iterates against experimental targets for width and depth.",
+  methodSteps: [
+    {
+      number: "01",
+      title: "Screen model parameters",
+      description: "Use a design of experiments (DOE) to organize simulation runs and estimate the effects of individual parameters and their interactions on melt-pool geometry.",
+    },
+    {
+      number: "02",
+      title: "Model the responses",
+      description: "Fit separate statistical response models for predicted width and depth to identify which parameters to calibrate and guide the search.",
+    },
+    {
+      number: "03",
+      title: "Run simulations against experimental targets",
+      description: "Supply experimental dimensions, parameter bounds, initial estimates, convergence tolerances, and a run limit. The workflow runs AdditiveFOAM, extracts the predicted dimensions, and compares them with the targets.",
+    },
+    {
+      number: "04",
+      title: "Update parameter estimates",
+      description: "Use the differences between predicted and measured dimensions to propose new parameter values within the specified bounds. Repeat until both dimensions meet their tolerances or the run limit is reached. If the run limit is reached first, report the best candidate and its convergence status.",
+    },
+    {
+      number: "05",
+      title: "Verify the selected parameters",
+      description: "Run a final AdditiveFOAM simulation with the selected parameter set to check both predicted dimensions against the experimental targets.",
+    },
+  ],
+  methodFigure: {
+    src: "/images/research/autocali-uiuc/fig1.png",
+    alt: "Flowchart showing statistical analysis of the IN625 design of experiments, two calibration approaches, and an AdditiveFOAM simulation loop that checks width and depth errors",
+    caption: "AdditiveFOAM calibration workflow. Statistical analysis of an 81-run IN625 design of experiments informs two approaches to proposing candidate parameters. Simulated width and depth are checked against experimental targets until both meet their tolerances or the run limit is reached.",
+  },
+  conclusionTitle: "Expected Impact",
+  conclusion: [
+    "A repeatable calibration procedure could make it easier to bring AdditiveFOAM predictions into agreement with measured melt-pool geometry and document how parameter sets were selected. The workflow could also provide a basis for calibration across additional materials, process conditions, and physics-based additive manufacturing models.",
+  ],
+};
+---
+
+<ResearchProjectPage {...project} />

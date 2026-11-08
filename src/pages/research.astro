@@ -1,37 +1,99 @@
 
 ---
-const projects = [
+import SiteHeader from "../components/SiteHeader.astro";
+
+const uiucProjects = [
+  {
+    number: "13",
+    title: "Process–Structure–Property Relationships in CuCrZr",
+    description: "Single-track experiments, local mechanical testing, and FLOW-3D simulations link laser wire deposition conditions to CuCrZr track geometry, microstructure, and mechanical response.",
+    image: null,
+    imageLabel: "PSP of CuCrZr via LW-DED",
+    link: `${import.meta.env.BASE_URL}/research/cucrzr-uiuc/`,
+  },
+  {
+    number: "12",
+    title: "Analytical Modeling for Laser Wire DED",
+    description: "An energy-balance model connects laser power, scan speed, and wire feed rate to melting and deposited track geometry.",
+    image: null,
+    imageLabel: "Analytical Model for LW-DED",
+    link: `${import.meta.env.BASE_URL}/research/lw-ded-uiuc/`,
+  },
+  {
+    number: "11",
+    title: "Process Mapping for Embedded 3D Printing",
+    description: "Printing experiments, fluid flow simulations, and Bayesian calibration aim to identify conditions that produce the desired feature geometry.",
+    image: null,
+    imageLabel: "Embedded 3D printing",
+    link: `${import.meta.env.BASE_URL}/research/e3dp-uiuc/`,
+  },
+  {
+    number: "10",
+    title: "Automated Calibration of AdditiveFOAM",
+    description: "An iterative workflow calibrates AdditiveFOAM simulations against measured melt-pool width and depth in laser powder bed fusion.",
+    image: null,
+    imageLabel: "AutoCalibration tool",
+    link: `${import.meta.env.BASE_URL}/research/additivefoam-uiuc/`,
+  },
+  {
+    number: "09",
+    title: "AI-Driven Melt Pool Segmentation",
+    description: "A general-purpose deep learning model segments melt pools in metallographic cross sections and supports automated measurement of their geometry.",
+    image: `${import.meta.env.BASE_URL}/images/research/seg-uiuc/fig2.png`,
+    link: `${import.meta.env.BASE_URL}/research/seg-uiuc/`,
+  },
+];
+
+const tamuProjects = [
+  {
+    number: "08",
+    title: "Computational Selection of Refractory Alloys for L-PBF",
+    description: "Single-track experiments, melt-pool modeling, and multi-criteria analysis rank eight refractory alloys by printability, cracking susceptibility, mechanical performance, and cost.",
+    image: `${import.meta.env.BASE_URL}/images/research/topsis-tamu/fig1.PNG`,
+    link: `${import.meta.env.BASE_URL}/research/topsis-tamu/`,
+  },
+  {
+    number: "07",
+    title: "High-Throughput Alloy and Process Design",
+    description: "A deep-learning surrogate accelerates probabilistic printability mapping to search alloy chemistry and process conditions together.",
+    image: null,
+    image: `${import.meta.env.BASE_URL}/images/research/htp-tamu/card.png`,
+    link: `${import.meta.env.BASE_URL}/research/htp-tamu/`,
+  },
   {
     number: "06",
-    title: "Physics-Based Modeling of Metal Additive Manufacturing",
-    description:
-      "Developing computational models to understand melt pool dynamics, process–material interactions, and predict manufacturing outcomes.",
-    image: `${import.meta.env.BASE_URL}/images/research/lpbf.jpg`,
-    link: `${import.meta.env.BASE_URL}/research/lpbf-modeling/`,
+    title: "Automated Printability Maps for Metal Alloys",
+    description: "A computational framework uses alloy chemistry and physics-based thermal models to predict defect-free processing windows for metal alloys.",
+    image: null,
+    image: `${import.meta.env.BASE_URL}/images/research/auto-tamu/card.png`,
+    imageLabel: "Printability maps",
+    link: `${import.meta.env.BASE_URL}/research/auto-tamu/`,
   },
   {
     number: "05",
-    title: "Large-Format Metal Additive Manufacturing",
-    description:
-      "Investigating emerging manufacturing processes, including Laser Wire Directed Energy Deposition and Additive Friction Stir Deposition.",
-    image: `${import.meta.env.BASE_URL}/images/research/large-format-am.jpg`,
-    link: `${import.meta.env.BASE_URL}/research/large-format-am/`,
+    title: "Bayesian Data-Augmented Modeling for L-PBF",
+    description: "We combine analytical thermal models, machine learning, and proxy experiments to predict melt-pool dimensions across alloy chemistries.",
+    image: null,
+    image: `${import.meta.env.BASE_URL}/images/research/aug-tamu/card.png`,
+    imageLabel: "Bayesian modeling",
+    link: `${import.meta.env.BASE_URL}/research/aug-tamu/`,
   },
   {
     number: "04",
-    title: "AI-Enabled Manufacturing and Digital Twins",
-    description:
-      "Integrating physics-based simulations, machine learning, and experimental data to enable predictive and intelligent manufacturing systems.",
-    image: `${import.meta.env.BASE_URL}/images/research/ai-manufacturing.jpg`,
-    link: `${import.meta.env.BASE_URL}/research/ai-manufacturing/`,
+    title: "Computational Co-Design of Printable Alloys",
+    description: "A perspective on combining printability screening, microstructure modeling, experiments, and data-driven optimization to co-design L-PBF alloy chemistry and process settings.",
+    image: `${import.meta.env.BASE_URL}/images/research/exp-tamu/fig1.png`,
+    imageLabel: "Computational alloy design",
+    link: `${import.meta.env.BASE_URL}/research/exp-tamu/`,
   },
-    {
+  {
     number: "03",
-    title: "Physics-Based Modeling of Metal Additive Manufacturing",
+    title: "Powder Feedstock and Process Effects on L-PBF IN718",
     description:
-      "Developing computational models to understand melt pool dynamics, process–material interactions, and predict manufacturing outcomes.",
-    image: `${import.meta.env.BASE_URL}/images/research/lpbf.jpg`,
-    link: `${import.meta.env.BASE_URL}/research/lpbf-modeling/`,
+      "We used design of experiments and statistical analysis to study how powder characteristics and energy input affect IN718 density and mechanical properties.",
+    image: `${import.meta.env.BASE_URL}/images/research/lpbf2-tamu/card.png`,
+    imageLabel: "Powder feedstock and process effects",
+    link: `${import.meta.env.BASE_URL}/research/lpbf2-tamu/`,
   },
   {
     number: "02",
@@ -39,16 +101,27 @@ const projects = [
     description:
       "We developed and validated a printability framework to compare nickel alloy 718 builds made with 60 μm and 90 μm powder layers.",
     image: `${import.meta.env.BASE_URL}/images/research/lpbf1-tamu/card.png`,
+    imageLabel: "Layer thickness and printability",
     link: `${import.meta.env.BASE_URL}/research/lpbf1-tamu/`,
   },
+];
+
+const aucProjects = [
   {
     number: "01",
     title: "Nanostructured Mg–Zn–Zr Alloys",
     description:
       "We used mechanical alloying and hot pipe rolling to produce nanostructured magnesium alloy sheets for potential biomedical applications.",
     image: `${import.meta.env.BASE_URL}/images/research/mg-auc/card.png`,
+    imageLabel: "Nanostructured magnesium alloys",
     link: `${import.meta.env.BASE_URL}/research/mg-auc/`,
   },
+];
+
+const projectGroups = [
+  { id: "uiuc-research", title: "Postdoctoral Research – University of Illinois Urbana-Champaign", projects: uiucProjects },
+  { id: "tamu-research", title: "PhD Research (Materials Science and Engineering) – Texas A&M University", projects: tamuProjects },
+  { id: "auc-research", title: "Master’s Research (Nanotechnology) – American University in Cairo", projects: aucProjects },
 ];
 ---
 
@@ -62,26 +135,12 @@ const projects = [
     name="description"
     content="Research projects in metal additive manufacturing, computational modeling, and AI-enabled manufacturing."
   />
+  <link rel="icon" href={`${import.meta.env.BASE_URL}/favicon.svg`} />
 </head>
 
 <body>
 
-  <!-- HEADER -->
-  <header class="site-header">
-    <div class="header-inner">
-      <a href={`${import.meta.env.BASE_URL}/`} class="site-logo">Peter Morcos</a>
-
-      <nav>
-        <a href={`${import.meta.env.BASE_URL}/`}>Home</a>
-        <a href={`${import.meta.env.BASE_URL}/about/`}>About</a>
-        <a href={`${import.meta.env.BASE_URL}/research/`} class="active">Research</a>
-        <a href={`${import.meta.env.BASE_URL}/publications/`}>Publications</a>
-        <a href={`${import.meta.env.BASE_URL}/teaching/`}>Teaching</a>
-        <a href={`${import.meta.env.BASE_URL}/cv/`}>CV</a>
-        <a href={`${import.meta.env.BASE_URL}/contact/`}>Contact</a>
-      </nav>
-    </div>
-  </header>
+  <SiteHeader />
 
   <main>
 
@@ -101,33 +160,41 @@ const projects = [
     <section class="projects-section">
       <div class="section-inner">
 
-        <div class="projects-grid">
-          {projects.map((project) => (
-            <article class="project-card">
+        {projectGroups.map((group) => (
+          <section class="project-group" aria-labelledby={group.id}>
+            <h2 id={group.id} class="project-group-title">{group.title}</h2>
+            <div class="projects-grid">
+              {group.projects.map((project) => (
+                <article class="project-card">
+                  <a href={project.link} class="project-image" aria-label={project.image ? undefined : project.title}>
+                    {project.image ? (
+                      <img
+                        src={project.image}
+                        alt={project.title}
+                        class:list={{ "contain-image": ["02", "07", "08", "09"].includes(project.number) }}
+                        loading="lazy"
+                      />
+                    ) : (
+                      <span class="project-image-placeholder" aria-hidden="true">
+                        <span>Research project</span>
+                        <strong>{project.imageLabel}</strong>
+                      </span>
+                    )}
+                    <span class="project-number">{project.number}</span>
+                  </a>
 
-              <a href={project.link} class="project-image">
-                <img
-                  src={project.image}
-                  alt={project.title}
-                  class:list={{ "contain-image": project.number === "02" }}
-                  loading="lazy"
-                />
-                <span class="project-number">{project.number}</span>
-              </a>
-
-              <div class="project-content">
-                <h2>{project.title}</h2>
-
-                <p>{project.description}</p>
-
-                <a href={project.link} class="read-more">
-                  Read More <span>→</span>
-                </a>
-              </div>
-
-            </article>
-          ))}
-        </div>
+                  <div class="project-content">
+                    <h3>{project.title}</h3>
+                    <p>{project.description}</p>
+                    <a href={project.link} class="read-more">
+                      Read More <span>→</span>
+                    </a>
+                  </div>
+                </article>
+              ))}
+            </div>
+          </section>
+        ))}
 
       </div>
     </section>
@@ -237,6 +304,15 @@ const projects = [
     padding: 35px 8% 90px;
   }
 
+  .project-group + .project-group {
+    margin-top: 48px;
+  }
+
+  .project-group-title {
+    font-size: 28px;
+    margin: 0 0 24px;
+  }
+
   .projects-grid {
     display: grid;
     grid-template-columns: repeat(3, minmax(0, 1fr));
@@ -274,6 +350,36 @@ const projects = [
     transition: transform 0.4s ease;
   }
 
+  .project-image-placeholder {
+    width: 100%;
+    height: 100%;
+    padding: 35px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 9px;
+    color: var(--ink);
+    text-align: center;
+    background:
+      linear-gradient(135deg, rgba(22, 139, 131, 0.12), rgba(22, 139, 131, 0.02)),
+      var(--light);
+  }
+
+  .project-image-placeholder > span {
+    color: var(--accent);
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+  }
+
+  .project-image-placeholder strong {
+    max-width: 240px;
+    font-size: 21px;
+    line-height: 1.35;
+  }
+
   .project-image img.contain-image {
     object-fit: contain;
     padding: 0px;
@@ -303,7 +409,7 @@ const projects = [
     padding: 24px;
   }
 
-  .project-content h2 {
+  .project-content h3 {
     font-size: 20px;
     line-height: 1.4;
     margin: 0 0 13px;

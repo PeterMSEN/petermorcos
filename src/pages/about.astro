@@ -1,5 +1,7 @@
 
 ---
+import SiteHeader from "../components/SiteHeader.astro";
+
 const education = [
   {
     year: "2025",
@@ -111,23 +113,12 @@ const experience = [
       name="description"
       content="About Peter Morcos — researcher in advanced manufacturing, computational materials science, and AI-enabled manufacturing."
     />
+    <link rel="icon" href={`${import.meta.env.BASE_URL}/favicon.svg`} />
     <title>About | Peter Morcos</title>
   </head>
 
   <body>
-    <header class="site-header">
-      <a href={`${import.meta.env.BASE_URL}/`} class="site-name">Peter Morcos, PhD</a>
-
-      <nav aria-label="Main navigation">
-        <a href={`${import.meta.env.BASE_URL}/`}>Home</a>
-        <a href={`${import.meta.env.BASE_URL}/about/`} class="active">About</a>
-        <a href={`${import.meta.env.BASE_URL}/research/`}>Research</a>
-        <a href={`${import.meta.env.BASE_URL}/publications/`}>Publications</a>
-        <a href={`${import.meta.env.BASE_URL}/teaching/`}>Teaching</a>
-        <a href={`${import.meta.env.BASE_URL}/cv/`}>CV</a>
-        <a href={`${import.meta.env.BASE_URL}/contact/`}>Contact</a>
-      </nav>
-    </header>
+    <SiteHeader />
 
     <main>
       <!-- ABOUT ME -->
@@ -163,7 +154,7 @@ const experience = [
       <!-- RESEARCH INTERESTS AND STRATEGY -->
       <section class="research-vision">
         <div class="section-inner">
-          <h1 class="page-title">Research Philosophy</h1>
+          <h2 class="page-title">Research Philosophy</h2>
           <div class="vision-content">
            
             <p>
@@ -202,7 +193,7 @@ const experience = [
         <section class="education-section">
         <div class="section-inner">
 
-            <h1 class="page-title">Education</h1>
+            <h2 class="page-title">Education</h2>
 
             <div class="education-timeline">
             <div class="education-line"></div>
@@ -677,6 +668,7 @@ const experience = [
     .intro-content p,
     .vision-content p {
       font-size: 16px;
+      text-align: left;
     }
 
 .education-timeline {

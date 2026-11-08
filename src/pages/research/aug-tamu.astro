@@ -1,0 +1,60 @@
+---
+import ResearchProjectPage from "../../components/ResearchProjectPage.astro";
+
+const project = {
+  title: "Data-Augmented Modeling in Laser Powder Bed Fusion: A Bayesian Approach",
+  description: "A physics-informed Bayesian approach for predicting L-PBF melt-pool geometry, cracking, and probabilistic printability under sparse-data conditions.",
+  authors: "P. Morcos, B. Vela, C. Acemi, A. Elwany, I. Karaman, and R. Arróyave",
+  publication: "Additive Manufacturing 96 (2024), 104545",
+  doi: "https://doi.org/10.1016/j.addma.2024.104545",
+  overviewTitle: "Research Summary",
+  overview: [
+    "This study developed a data-augmentation framework for L-PBF printability prediction when experimental measurements are sparse. Gaussian process regression (GPR) was supplied with Eagar–Tsai thermal-model predictions as physics-informed priors, while hierarchical models used the correlation between readily measured melt-pool width and more difficult-to-measure depth or crack density. The framework was evaluated for interpolation within known alloys and extrapolation to previously unseen refractory multi-principal-element alloy chemistries.",
+  ],
+  objectives: [
+    { number: "01", title: "Correct low-fidelity physics with data", description: "Use experimental observations to update fast analytical melt-pool predictions without costly parametric calibration." },
+    { number: "02", title: "Exploit correlated measurements", description: "Use melt-pool width as an informative feature for predicting depth and linear crack density." },
+    { number: "03", title: "Evaluate transfer to unseen alloys", description: "Test whether the models preserve accuracy and physical ranking when extrapolating across alloy chemistry." },
+    { number: "04", title: "Quantify predictive uncertainty", description: "Convert GPR distributions into probabilistic defect maps instead of relying only on deterministic boundaries." },
+  ],
+  approachTitle: "Modeling and Validation Approach",
+  methodLead: "Five candidate models isolated the contributions of analytical priors, hierarchical data augmentation, and their combined use.",
+  methodSteps: [
+    { number: "01", title: "Generate physics-informed priors", description: "The Eagar–Tsai model supplied low-cost prior response surfaces for melt-pool width and depth." },
+    { number: "02", title: "Train hierarchical Gaussian processes", description: "Separate GPRs predicted width and depth, with width predictions also used as proxy information for depth and crack-density models." },
+    { number: "03", title: "Benchmark under sparse-data conditions", description: "Two-fold cross-validation was repeated 250 times using error and rank-order metrics for AF9628, IN718, and refractory multi-principal-element alloys." },
+    { number: "04", title: "Test compositional extrapolation", description: "Models trained on ten refractory alloy chemistries predicted melt-pool dimensions and crack density for six unseen chemistries." },
+    { number: "05", title: "Construct probabilistic defect maps", description: "GPR means and uncertainties were propagated through defect thresholds to map the probability of lack-of-fusion across power–velocity space." },
+  ],
+  resultsTitle: "Key Findings",
+  resultsSubtitle: "Physics-informed hierarchy improved prediction under sparse data",
+  results: [
+    "The combined model, which used Eagar–Tsai priors together with hierarchical width-to-depth augmentation, consistently produced the lowest prediction errors and the strongest rank-order performance for the single-composition benchmarks. Its AF9628 and IN718 printability maps also agreed closely with ground-truth maps produced using more computationally intensive calibration.",
+    "For compositional extrapolation, physics-informed width predictions improved melt-pool depth and linear crack-density estimates for alloys absent from the training set. The probabilistic maps additionally exposed uncertainty in sparsely sampled portions of process space, where deterministic defect boundaries would imply unjustified confidence.",
+  ],
+  findings: [
+    { value: "5 models", label: "Controlled comparison", description: "Separated analytical, data-driven, prior-informed, and hierarchical contributions." },
+    { value: "250×", label: "Repeated validation", description: "Cross-validation was repeated across distinct train–test splits." },
+    { value: "10 → 6", label: "Chemistry extrapolation", description: "Ten refractory alloys trained models evaluated on six unseen alloys." },
+    { value: "195", label: "Crack-density tracks", description: "Single tracks spanning 16 refractory alloy chemistries." },
+  ],
+  figures: [
+    {
+      src: "/images/research/aug-tamu/fig2.png",
+      alt: "Schematic of physics-informed Gaussian process regression and proxy-data augmentation for melt-pool prediction",
+      caption: "Physics-informed priors improve Gaussian-process extrapolation, while correlated width measurements provide proxy information for hierarchical depth prediction.",
+    },
+    {
+      src: "/images/research/aug-tamu/fig14.png",
+      alt: "Probabilistic lack-of-fusion map derived from Gaussian process depth predictions",
+      caption: "Gaussian-process uncertainty propagated through the depth criterion to produce a probabilistic lack-of-fusion map across laser power and scan speed.",
+    },
+  ],
+  conclusionTitle: "Research Significance",
+  conclusion: [
+    "The work demonstrates that fast analytical models and sparse experiments can be fused non-parametrically to obtain more accurate and physically meaningful printability predictions. The approach is particularly valuable for alloy design, where predictions are required before a candidate chemistry has been synthesized. Because the validation used single tracks, extension to multilayer thermal histories and additional defect mechanisms remains necessary for full-build qualification.",
+  ],
+};
+---
+
+<ResearchProjectPage {...project} />

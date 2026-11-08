@@ -1,0 +1,48 @@
+---
+import ResearchProjectPage from "../../components/ResearchProjectPage.astro";
+
+const project = {
+  title: "Computationally Guided Selection of Refractory Multi-Principal Element Alloys for Laser Powder Bed Fusion",
+  description: "An experimental and computational framework for ranking eight refractory alloys for laser powder bed fusion.",
+  overviewTitle: "Research Summary",
+  overview: [
+    "Refractory multi-principal element alloys (RMPEAs) are promising candidates for high-temperature structures, but their use in laser powder bed fusion (L-PBF) is limited by printability challenges and susceptibility to solidification cracking. This study combines single-track experiments, physics-based modeling, machine learning, and multi-criteria decision analysis to compare eight refractory alloy compositions.",
+  ],
+  objectives: [
+    { number: "01", title: "Assess printability and cracking", description: "Use single-track measurements and thermal modeling to identify candidate process windows and assess cracking susceptibility." },
+    { number: "02", title: "Rank candidate compositions", description: "Identify alloys that balance printability, crack resistance, mechanical performance, and material cost." },
+  ],
+  approachTitle: "Methodology",
+  methodLead: "The workflow proceeds from initial process mapping and experimental characterization to a weighted ranking of candidate compositions.",
+  methodSteps: [
+    { number: "01", title: "Map and test initial process conditions", description: "Use a low-fidelity analytical melt-pool model to generate preliminary process maps, guide single-track L-PBF experiments, and select conditions for measuring melt-pool dimensions." },
+    { number: "02", title: "Correct melt-pool predictions with experimental data", description: "Use hierarchical Gaussian process regression (GPR) to update analytical predictions with measured melt-pool dimensions and generate experimentally informed printability maps for each alloy." },
+    { number: "03", title: "Assess thermal gradients and cracking", description: "Use an Eagar–Tsai-based thermal model (EASM) to estimate longitudinal and transverse thermal gradients and assess the associated thermal stresses. Combine the thermal analysis with material indicators of solidification and cracking susceptibility." },
+    { number: "04", title: "Weight the evaluation criteria", description: "Evaluate ten indicators spanning printability, cracking susceptibility, mechanical performance, and economic feasibility. Use the Analytic Hierarchy Process (AHP) to assign relative weights to the criteria." },
+    { number: "05", title: "Rank the eight candidate alloys", description: "Apply the Technique for Order Preference by Similarity to Ideal Solution (TOPSIS) to compare each composition with ideal and least favorable profiles across the weighted criteria." },
+  ],
+  resultsTitle: "Key Findings",
+  resultsSubtitle: "Niobium-rich alloys generally ranked higher under the selected criteria",
+  results: [
+    "Under the weights used in this study, niobium-rich compositions generally offered a more favorable balance across the four categories. Hafnium or vanadium additions and higher tantalum content could improve individual mechanical properties, but penalties in cracking susceptibility, processing behavior, or material cost reduced the overall rankings of some compositions.",
+    "The thermal analysis indicated higher gradients transverse to the scan direction than along it. This directional difference helps interpret the observed cracking behavior.",
+  ],
+  findings: [
+    { value: "8", label: "Candidate compositions", description: "Refractory alloys compared using the same evaluation framework." },
+    { value: "10", label: "Performance indicators", description: "Inputs to the weighted comparison of the candidate alloys." },
+  ],
+  figures: [
+    {
+      src: "/images/research/topsis-tamu/fig1.PNG",
+      alt: "Workflow from single-track experiments through printability-map correction, thermal-gradient analysis, and criteria weighting to alloy ranking",
+      caption: "Flow diagram illustrating the high-throughput framework for ranking alloy compositions.",
+    },
+  ],
+  conclusionTitle: "Research Contributions and Impact",
+  conclusion: [
+    "The study connects experimental process maps and thermal indicators of cracking with an explicit ranking of material trade-offs. The framework can be applied to larger candidate sets, and its criteria weights can be adjusted for applications with different priorities. The ranking identifies compositions for further testing.",
+  ],
+};
+---
+
+<ResearchProjectPage {...project} />

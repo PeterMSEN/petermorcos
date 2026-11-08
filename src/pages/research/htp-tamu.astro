@@ -1,0 +1,60 @@
+---
+import ResearchProjectPage from "../../components/ResearchProjectPage.astro";
+
+const project = {
+  title: "High-Throughput Alloy and Process Design for Metal Additive Manufacturing",
+  description: "A high-throughput alloy–process co-design framework combining thermal models, a neural-network surrogate, probabilistic printability maps, and multi-objective optimization.",
+  authors: "S. Sheikh, B. Vela, P. Honarmandi, P. Morcos, D. Shoukr, A. M. Kotb, I. Karaman, A. Elwany, and R. Arróyave",
+  publication: "npj Computational Materials 11 (2025), Article 179",
+  doi: "https://doi.org/10.1038/s41524-025-01670-x",
+  overviewTitle: "Research Summary",
+  overview: [
+    "This study established a high-throughput computational framework for jointly designing alloy chemistry and L-PBF process conditions. CALPHAD-derived properties, three melt-pool thermal models, process- and composition-based defect criteria, and a neural-network surrogate were combined to screen the Co–Cr–Fe–Mn–Ni space. The framework was validated for equiatomic CoCrFeMnNi and then used for probabilistic printability assessment and multi-objective alloy selection.",
+  ],
+  objectives: [
+    { number: "01", title: "Co-design chemistry and processing", description: "Search composition and laser-processing spaces simultaneously rather than optimizing them sequentially." },
+    { number: "02", title: "Screen intrinsic and process-induced defects", description: "Account for hot-cracking and balling susceptibility together with lack-of-fusion, keyholing, and process-induced balling." },
+    { number: "03", title: "Enable high-throughput evaluation", description: "Replace repeated analytical melt-pool calculations with an accurate neural-network surrogate." },
+    { number: "04", title: "Rank candidates under competing objectives", description: "Use Pareto optimization and probabilistic printability indices to identify application-relevant alloy candidates." },
+  ],
+  approachTitle: "High-Throughput Design Approach",
+  methodLead: "The workflow connects alloy thermodynamics, melt-pool physics, defect classification, surrogate modeling, and multi-objective selection.",
+  methodSteps: [
+    { number: "01", title: "Describe the composition space", description: "CALPHAD and reduced-order models calculate phase stability, thermophysical properties, hot-cracking indicators, and intrinsic balling susceptibility." },
+    { number: "02", title: "Model melt-pool behavior", description: "Analytical, dimensionless, and neural-network Eagar–Tsai models estimate melt-pool geometry across candidate process conditions." },
+    { number: "03", title: "Construct probabilistic printability maps", description: "Multiple defect criteria classify lack-of-fusion, keyholing, and balling, while ensemble maps quantify agreement and uncertainty." },
+    { number: "04", title: "Accelerate with a neural surrogate", description: "A neural network trained on analytical simulations enables rapid evaluation of large chemistry–process spaces within its training bounds." },
+    { number: "05", title: "Perform multi-objective alloy selection", description: "Pareto analysis balances phase stability, hot-cracking resistance, intrinsic balling resistance, and the size of the defect-free process window." },
+  ],
+  resultsTitle: "Key Findings",
+  resultsSubtitle: "Surrogate acceleration exposed a composition–printability tradeoff",
+  results: [
+    "The neural surrogate reproduced analytical Eagar–Tsai melt-pool predictions with coefficients of determination near 0.99 and enabled high-throughput evaluation approximately three orders of magnitude faster. The validated framework was then applied to thousands of Co–Cr–Fe–Mn–Ni candidates, including 1,610 compositions satisfying the single-phase FCC constraint at 1300 °C.",
+    "Pareto screening identified candidate alloys that improved the printability index relative to equiatomic CoCrFeMnNi. Across the broader feasible space, Ni-rich, lower-entropy compositions were predicted to be more printable, whereas increasing compositional complexity reduced thermal conductivity, elongated melt pools, and increased balling susceptibility. A representative low-entropy alloy reached a 21.5% printability index compared with 9.2% for a high-entropy counterpart.",
+  ],
+  findings: [
+    { value: "~1000×", label: "Faster screening", description: "Reported acceleration from the neural-network melt-pool surrogate." },
+    { value: "R² ≈ 0.99", label: "Surrogate fidelity", description: "Agreement with analytical melt-pool length, width, and depth predictions." },
+    { value: "1,610", label: "FCC candidates", description: "Compositions screened after the high-temperature phase constraint." },
+    { value: "21.5 / 9.2%", label: "Printability index", description: "Representative low- versus high-entropy alloy comparison." },
+  ],
+  figures: [
+    {
+      src: "/images/research/htp-tamu/fig2.png",
+      alt: "High-throughput framework for joint alloy and additive manufacturing process design",
+      caption: "High-throughput alloy–process co-design framework combining thermophysical properties, melt-pool surrogates, defect criteria, printability maps, and multi-objective ranking.",
+    },
+    {
+      src: "/images/research/htp-tamu/fig11.png",
+      alt: "Printability-index comparison between low- and high-entropy alloys in the cobalt-chromium-iron-manganese-nickel space",
+      caption: "High-throughput screening of the Co–Cr–Fe–Mn–Ni space showing a larger defect-free process window for a representative low-entropy alloy than for a high-entropy alloy.",
+    },
+  ],
+  conclusionTitle: "Research Significance",
+  conclusion: [
+    "The framework converts printability from a post-design process-development problem into an alloy-design objective that can be evaluated at scale. Its probabilistic maps and Pareto analysis support resource allocation and candidate ranking, but the conclusions remain model-based and single-track focused; promising compositions and processing windows require experimental and multilayer validation.",
+  ],
+};
+---
+
+<ResearchProjectPage {...project} />
